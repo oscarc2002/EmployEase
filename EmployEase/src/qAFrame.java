@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author mario
  */
-public class qAFrame extends javax.swing.JFrame {
+public class QAFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form qAFrame
      */
-    public qAFrame() {
+    public QAFrame() {
         initComponents();
     }
 
@@ -242,7 +242,7 @@ public class qAFrame extends javax.swing.JFrame {
         int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres cerrar sesión?","Opciones",JOptionPane.YES_NO_OPTION);
         if(opc==0)
         {
-            startSesion_Frame sSF = new startSesion_Frame();
+            StartSesion_Frame sSF = new StartSesion_Frame();
             sSF.show();
             this.dispose();
         }
@@ -265,20 +265,21 @@ public class qAFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(qAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(qAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(qAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(qAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new qAFrame().setVisible(true);
+                new QAFrame().setVisible(true);
             }
         });
     }
