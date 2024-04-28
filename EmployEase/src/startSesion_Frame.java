@@ -1,12 +1,12 @@
-
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class StartSesion_Frame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form startSesion_Frame
-     */
+    SQLConnection connection = new SQLConnection();
+    
     public StartSesion_Frame() {
         initComponents();
     }
@@ -165,45 +165,39 @@ public class StartSesion_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnStartSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartSesionActionPerformed
-        if(txtUserName.getText().equals("") || txtPassword.getText().equals(""))
+        PreparedStatement st;
+        ResultSet rs;
+        
+        String username = txtUserName.getText();
+        String password = String.valueOf(txtPassword.getPassword());
+        
+        String query = "SELECT * FROM `empleados` WHERE `user` = ? AND `password` = ?";
+        try 
         {
-            JOptionPane.showMessageDialog(rootPane, "Llena todos los campos por favor.","Error",JOptionPane.ERROR_MESSAGE);
-        }
-        else
+            st = connection.getConectarDB().prepareStatement(query);
+            
+            st.setString(1, username);
+            st.setString(2, password);
+            rs = st.executeQuery();
+            
+            if(rs.next())
+            {
+                Info_Frame info = new Info_Frame();
+                info.show();
+                this.dispose();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(rootPane, "La contraseña o el usuario son incorrectos","Error",JOptionPane.ERROR_MESSAGE);
+            }
+        } 
+        catch (Exception e) 
         {
-            Info_Frame info = new Info_Frame();
-            info.show();
-            this.dispose();
+            System.out.println(e.toString());
         }
     }//GEN-LAST:event_btnStartSesionActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StartSesion_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StartSesion_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StartSesion_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StartSesion_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
