@@ -41,6 +41,7 @@ public class Documentation_Frame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        itemRegresar = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -109,6 +110,15 @@ public class Documentation_Frame extends javax.swing.JFrame {
         jButton2.setText("Descargar");
 
         jMenu1.setText("File");
+
+        itemRegresar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        itemRegresar.setText("Regresar");
+        itemRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegresarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemRegresar);
 
         jMenuItem1.setText("Cerrar sesión");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +199,12 @@ public class Documentation_Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void itemRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegresarActionPerformed
+        Info_Frame info = new Info_Frame();
+        info.show();
+        this.dispose();
+    }//GEN-LAST:event_itemRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -226,6 +242,7 @@ public class Documentation_Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itemRegresar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

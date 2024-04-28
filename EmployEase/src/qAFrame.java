@@ -46,6 +46,7 @@ public class QAFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        itemReturn = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -186,6 +187,15 @@ public class QAFrame extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
+        itemReturn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        itemReturn.setText("Regresar");
+        itemReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReturnActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemReturn);
+
         jMenuItem1.setText("Cerrar sesión");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +258,12 @@ public class QAFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void itemReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReturnActionPerformed
+        Info_Frame info = new Info_Frame();
+        info.show();
+        this.dispose();
+    }//GEN-LAST:event_itemReturnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -285,6 +301,7 @@ public class QAFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itemReturn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
