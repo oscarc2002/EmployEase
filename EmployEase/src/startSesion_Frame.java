@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,6 +65,11 @@ public class StartSesion_Frame extends javax.swing.JFrame {
         });
 
         txtPassword.setName("txtPassword"); // NOI18N
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("Contraseña:");
 
@@ -196,6 +202,10 @@ public class StartSesion_Frame extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }//GEN-LAST:event_btnStartSesionActionPerformed
+
+    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
+        
+    }//GEN-LAST:event_txtPasswordKeyTyped
 
     public static void main(String args[]) {
 
