@@ -38,7 +38,7 @@ public class StartSesion_Frame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel1.setText("Inicio de Sesión");
 
-        txtUserName.setForeground(new java.awt.Color(153, 153, 153));
+        txtUserName.setForeground(new java.awt.Color(0, 0, 0));
         txtUserName.setName("txtUserName"); // NOI18N
         txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

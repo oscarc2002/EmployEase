@@ -722,7 +722,7 @@ public class AddEmployee extends javax.swing.JFrame {
         if(rbtnActive.isSelected())
         {
             txtReasons.setEnabled(false);
-            txtComentaries.setEditable(false);
+            txtComentaries.setEnabled(false);
         }
     }//GEN-LAST:event_rbtnActiveActionPerformed
 
@@ -730,7 +730,7 @@ public class AddEmployee extends javax.swing.JFrame {
         if(rbtnInactive.isSelected())
         {
             txtReasons.setEnabled(true);
-            txtComentaries.setEditable(true);
+            txtComentaries.setEnabled(true);
         }
     }//GEN-LAST:event_rbtnInactiveActionPerformed
 
@@ -755,6 +755,10 @@ public class AddEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_sliderRecommendedStateChanged
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        addRegister();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void addRegister(){
         PreparedStatement st;
         ResultSet rs;
         
@@ -860,11 +864,8 @@ public class AddEmployee extends javax.swing.JFrame {
                 System.out.println(e.toString());
             }
         }
-        
-        
-        
-    }//GEN-LAST:event_btnAddActionPerformed
-
+    }
+    
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         PreparedStatement st;
         ResultSet rs;
