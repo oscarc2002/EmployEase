@@ -12,6 +12,7 @@ public class Info_Frame extends javax.swing.JFrame {
     
     public Info_Frame() {
         initComponents();
+        loadData("where `estatus` = 'ACTIVO'");
         adjustSize();
     }
     
@@ -43,11 +44,12 @@ public class Info_Frame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtDepartamento = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnGenerar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
+        chkMostrarActivos = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itemDocumentation = new javax.swing.JMenuItem();
@@ -56,11 +58,6 @@ public class Info_Frame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setText("Tabla de empleados");
@@ -70,9 +67,6 @@ public class Info_Frame extends javax.swing.JFrame {
         txtID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtIDKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtIDKeyTyped(evt);
             }
         });
 
@@ -176,19 +170,19 @@ public class Info_Frame extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Actualizar");
-        jButton2.setEnabled(false);
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setEnabled(false);
 
-        jButton3.setText("Eliminar");
-        jButton3.setEnabled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setEnabled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Generar contrato");
-        jButton4.setEnabled(false);
+        btnGenerar.setText("Generar contrato");
+        btnGenerar.setEnabled(false);
 
         tableData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,7 +202,21 @@ public class Info_Frame extends javax.swing.JFrame {
         });
         tableData.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tableData.setShowGrid(true);
+        tableData.getTableHeader().setReorderingAllowed(false);
+        tableData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDataMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableData);
+
+        chkMostrarActivos.setSelected(true);
+        chkMostrarActivos.setText("Mostrar solo activos");
+        chkMostrarActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMostrarActivosActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
 
@@ -261,14 +269,17 @@ public class Info_Frame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(5, 5, 5))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGenerar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chkMostrarActivos)
+                        .addContainerGap(27, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,13 +292,15 @@ public class Info_Frame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(btnActualizar)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGenerar)
+                        .addGap(18, 18, 18)
+                        .addComponent(chkMostrarActivos)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -298,9 +311,9 @@ public class Info_Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         AddEmployee add = new AddEmployee();
@@ -330,10 +343,6 @@ public class Info_Frame extends javax.swing.JFrame {
         qa.show();
         this.dispose();
     }//GEN-LAST:event_itemQAActionPerformed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        loadData("");
-    }//GEN-LAST:event_formWindowActivated
 
     private void loadData(String where){
         PreparedStatement st;
@@ -397,10 +406,6 @@ public class Info_Frame extends javax.swing.JFrame {
         }
     }
     
-    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
-        
-    }//GEN-LAST:event_txtIDKeyTyped
-
     private void txtIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyReleased
         if(txtID.getText().trim().equals(""))
             loadData("");
@@ -440,6 +445,19 @@ public class Info_Frame extends javax.swing.JFrame {
             loadData("where `departamento` like " + text);
     }//GEN-LAST:event_txtDepartamentoKeyReleased
 
+    private void chkMostrarActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarActivosActionPerformed
+        if(chkMostrarActivos.isSelected())
+            loadData("where `estatus` = 'ACTIVO'");
+        else
+            loadData("");
+    }//GEN-LAST:event_chkMostrarActivosActionPerformed
+
+    private void tableDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDataMouseClicked
+        btnActualizar.setEnabled(true);
+        btnEliminar.setEnabled(true);
+        btnGenerar.setEnabled(true);
+    }//GEN-LAST:event_tableDataMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -476,13 +494,14 @@ public class Info_Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGenerar;
+    private javax.swing.JCheckBox chkMostrarActivos;
     private javax.swing.JMenuItem itemCloseSession;
     private javax.swing.JMenuItem itemDocumentation;
     private javax.swing.JMenuItem itemQA;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
