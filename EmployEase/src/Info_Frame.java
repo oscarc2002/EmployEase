@@ -1,4 +1,3 @@
-
 import com.mysql.cj.x.protobuf.MysqlxResultset;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +8,8 @@ import javax.swing.table.DefaultTableModel;
 public class Info_Frame extends javax.swing.JFrame {
 
     SQLConnection connection = new SQLConnection();
+    int id = 0;
+    String nombre = "";
     
     public Info_Frame() {
         initComponents();
@@ -50,6 +51,8 @@ public class Info_Frame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
         chkMostrarActivos = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itemDocumentation = new javax.swing.JMenuItem();
@@ -172,6 +175,11 @@ public class Info_Frame extends javax.swing.JFrame {
 
         btnActualizar.setText("Actualizar");
         btnActualizar.setEnabled(false);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
         btnEliminar.setEnabled(false);
@@ -217,6 +225,10 @@ public class Info_Frame extends javax.swing.JFrame {
                 chkMostrarActivosActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("Empleado seleccionado:");
+
+        lblNombre.setText("Ninguno");
 
         jMenu1.setText("File");
 
@@ -278,8 +290,11 @@ public class Info_Frame extends javax.swing.JFrame {
                         .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(chkMostrarActivos)
-                        .addContainerGap(27, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(chkMostrarActivos)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(25, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,6 +309,10 @@ public class Info_Frame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnActualizar)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
@@ -301,18 +320,42 @@ public class Info_Frame extends javax.swing.JFrame {
                         .addComponent(btnGenerar)
                         .addGap(18, 18, 18)
                         .addComponent(chkMostrarActivos)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNombre)
+                        .addGap(93, 93, 93))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void deleteRegister(){
+        PreparedStatement st;
+        ResultSet rs;
+        
+        try {
+            String query = "delete from `employease` where `id_empleado` = ?" ;
+            
+            st = connection.getConectarDB().prepareStatement(query);
+            st.setInt(1, id);
+            
+            if(st.executeUpdate() > 0){
+                JOptionPane.showMessageDialog(rootPane, "Registro eliminado");
+            }
+            
+            loadData("");
+        } catch (Exception e) {
+        }
+    }
+    
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres eliminar a "+ nombre + " con id: " + id + "?",
+                "Opciones",JOptionPane.YES_NO_OPTION);
+        if(opc==JOptionPane.YES_OPTION)
+        {
+            deleteRegister();
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -411,6 +454,7 @@ public class Info_Frame extends javax.swing.JFrame {
             loadData("");
         else
             loadData("where `id_empleado` = " + txtID.getText().trim());
+        chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtIDKeyReleased
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
@@ -419,6 +463,7 @@ public class Info_Frame extends javax.swing.JFrame {
             loadData("");
         else
             loadData("where `nombre` like " + text);
+        chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtNombreKeyReleased
 
     private void txtUnidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUnidadKeyReleased
@@ -427,6 +472,7 @@ public class Info_Frame extends javax.swing.JFrame {
             loadData("");
         else
             loadData("where `unidad` like " + text);
+        chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtUnidadKeyReleased
 
     private void txtPuestoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuestoKeyReleased
@@ -435,6 +481,7 @@ public class Info_Frame extends javax.swing.JFrame {
             loadData("");
         else
             loadData("where `puesto` like " + text);
+        chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtPuestoKeyReleased
 
     private void txtDepartamentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDepartamentoKeyReleased
@@ -443,6 +490,7 @@ public class Info_Frame extends javax.swing.JFrame {
             loadData("");
         else
             loadData("where `departamento` like " + text);
+        chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtDepartamentoKeyReleased
 
     private void chkMostrarActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarActivosActionPerformed
@@ -452,11 +500,25 @@ public class Info_Frame extends javax.swing.JFrame {
             loadData("");
     }//GEN-LAST:event_chkMostrarActivosActionPerformed
 
+    private void setButtons(boolean condition){
+        btnActualizar.setEnabled(condition);
+        btnEliminar.setEnabled(condition);
+        btnGenerar.setEnabled(condition);
+    }
+    
     private void tableDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDataMouseClicked
-        btnActualizar.setEnabled(true);
-        btnEliminar.setEnabled(true);
-        btnGenerar.setEnabled(true);
+        setButtons(true); //Activate bottons
+        
+        int index = tableData.getSelectedRow();
+        DefaultTableModel tblModel = (DefaultTableModel) tableData.getModel();
+        id = Integer.parseInt(tblModel.getValueAt(index, 0).toString());
+        nombre = tblModel.getValueAt(index, 2).toString();
+        lblNombre.setText(nombre);
     }//GEN-LAST:event_tableDataMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -508,11 +570,13 @@ public class Info_Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JTable tableData;
     private javax.swing.JTextField txtDepartamento;
     private javax.swing.JTextField txtID;

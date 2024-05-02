@@ -13,6 +13,7 @@ public class AddEmployee extends javax.swing.JFrame {
     
     public AddEmployee() {
         initComponents();
+        loadData();
     }
 
     /**
@@ -144,11 +145,6 @@ public class AddEmployee extends javax.swing.JFrame {
         jTextField35.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel1.setText("Ingreso de Nuevo Empleado");
@@ -170,11 +166,6 @@ public class AddEmployee extends javax.swing.JFrame {
 
         jLabel7.setText("Teléfono:");
 
-        txtPhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneActionPerformed(evt);
-            }
-        });
         txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPhoneKeyTyped(evt);
@@ -413,15 +404,14 @@ public class AddEmployee extends javax.swing.JFrame {
                             .addComponent(jLabel40))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtBroxel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtUnit, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtNSS, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtCivilState, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel15)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBroxel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtUnit, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNSS, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCivilState, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtBeneficiaryName, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                             .addComponent(chkVaccinated, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel27)
@@ -683,23 +673,11 @@ public class AddEmployee extends javax.swing.JFrame {
         }
     }
     
-    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
-        
-    }//GEN-LAST:event_txtPhoneActionPerformed
-
     private void itemRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegresarActionPerformed
         Info_Frame info = new Info_Frame();
         info.show();
         this.dispose();
     }//GEN-LAST:event_itemRegresarActionPerformed
-
-    private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
-        //Solo numeros y espacio
-        if(!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar()))
-        {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtPhoneKeyTyped
 
     private void txtBroxelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBroxelKeyTyped
         //Solo numeros y espacio
@@ -857,7 +835,7 @@ public class AddEmployee extends javax.swing.JFrame {
         }
     }
     
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+    private void loadData(){
         PreparedStatement st;
         ResultSet rs;
         String query = "SELECT MAX(id_empleado) FROM `employease`";
@@ -885,8 +863,8 @@ public class AddEmployee extends javax.swing.JFrame {
         caldStart.setDate(Date.valueOf(LocalDate.of(0, Month.JANUARY, 1)));
         caldFinish.setDate(Date.valueOf(LocalDate.of(0, Month.JANUARY, 1)));
         calRegisterIMSS.setDate(Date.valueOf(LocalDate.of(0, Month.JANUARY, 1)));
-    }//GEN-LAST:event_formWindowActivated
-
+    }
+    
     private void txtClaveIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveIKeyTyped
         //Solo numeros
         if(!Character.isDigit(evt.getKeyChar()))
@@ -894,6 +872,14 @@ public class AddEmployee extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtClaveIKeyTyped
+
+    private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
+        //Solo numeros y espacio
+        if(!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar()))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPhoneKeyTyped
 
     public static void main(String args[]) {
 
