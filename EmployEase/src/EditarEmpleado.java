@@ -1,19 +1,20 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Month;
-import javax.swing.JOptionPane;
+/**
+ *
+ * @author Mario
+ */
+public class EditarEmpleado extends javax.swing.JPanel {
 
-public class AddEmployee extends javax.swing.JFrame {
-
-    SQLConnection connection = new SQLConnection();
-    
-    public AddEmployee() {
+    /**
+     * Creates new form EditarEmpleado
+     */
+    public EditarEmpleado() {
         initComponents();
-        loadData();
+        
     }
 
     /**
@@ -25,25 +26,6 @@ public class AddEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        label1 = new java.awt.Label();
-        jTextField35 = new javax.swing.JTextField();
-        btnGroupSexos = new javax.swing.ButtonGroup();
-        btnGroupEstatus = new javax.swing.ButtonGroup();
-        btnGroupTipo = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lblCurrentDate = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
@@ -113,53 +95,6 @@ public class AddEmployee extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtComentaries = new javax.swing.JTextArea();
         cboxCivilState = new javax.swing.JComboBox<>();
-        jLabel30 = new javax.swing.JLabel();
-        lblID = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        itemRegresar = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-
-        jLabel9.setText("Nombre(s):");
-
-        jTextField5.setText("jTextField1");
-
-        jLabel10.setText("Apellido(s):");
-
-        jTextField6.setText("jTextField1");
-
-        jLabel14.setText("jLabel5");
-
-        jTextField10.setText("jTextField1");
-
-        jTextField14.setText("jTextField1");
-
-        jLabel18.setText("jLabel5");
-
-        jLabel20.setText("jLabel20");
-
-        label1.setText("label1");
-
-        jTextField35.setText("jTextField1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ingreso de Nuevo Empleado");
-
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel2.setText("N° de empleado:");
-
-        lblCurrentDate.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lblCurrentDate.setText("0");
-
-        jLabel4.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel4.setText("Información personal");
-
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         jLabel5.setText("Nombre (*):");
 
@@ -235,18 +170,15 @@ public class AddEmployee extends javax.swing.JFrame {
 
         jLabel31.setText("Fecha de nacimiento:");
 
-        btnGroupSexos.add(rbtnMan);
         rbtnMan.setSelected(true);
         rbtnMan.setText("Hombre");
 
-        btnGroupSexos.add(rbtnWoman);
         rbtnWoman.setText("Mujer");
 
         jLabel32.setText("Lugar de nacimiento:");
 
         jLabel33.setText("Estatus:");
 
-        btnGroupEstatus.add(rbtnActive);
         rbtnActive.setSelected(true);
         rbtnActive.setText("Activo");
         rbtnActive.addActionListener(new java.awt.event.ActionListener() {
@@ -255,7 +187,6 @@ public class AddEmployee extends javax.swing.JFrame {
             }
         });
 
-        btnGroupEstatus.add(rbtnInactive);
         rbtnInactive.setText("Inactivo");
         rbtnInactive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,11 +212,9 @@ public class AddEmployee extends javax.swing.JFrame {
 
         jLabel38.setText("Tipo de registro:");
 
-        btnGroupTipo.add(rbtnRegister);
         rbtnRegister.setSelected(true);
         rbtnRegister.setText("Alta");
 
-        btnGroupTipo.add(rbtnRestart);
         rbtnRestart.setText("Reingreso");
 
         jLabel39.setText("Fecha de alta del IMSS:");
@@ -569,124 +498,35 @@ public class AddEmployee extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        jScrollPane1.setViewportView(jPanel1);
-
-        jLabel30.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel30.setText("Fecha de registro:");
-
-        lblID.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lblID.setText("0");
-
-        btnAdd.setText("Agregar registro");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Campos con * son obligatorios");
-
-        jMenu1.setText("File");
-
-        itemRegresar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        itemRegresar.setText("Regresar");
-        itemRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemRegresarActionPerformed(evt);
-            }
-        });
-        jMenu1.add(itemRegresar);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel30)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCurrentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))
-                        .addGap(0, 318, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(434, 434, 434)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 795, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lblCurrentDate)
-                    .addComponent(jLabel30)
-                    .addComponent(lblID)
-                    .addComponent(btnAdd))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 815, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public boolean verifyFields()
-    {
-        String nombre = txtName.getText();
-        String apellido = txtLastNime.getText();
-        String unidad = txtUnit.getText();
-        String puesto = txtPosition.getText();
-        String departamento = txtDepartment.getText();
-        
-        if(nombre.trim().equals("") || apellido.trim().equals("") || unidad.trim().equals("") || puesto.trim().equals("")
-                || departamento.trim().equals(""))
+    private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
+        //Solo numeros y espacio
+        if(!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar()))
         {
-            JOptionPane.showMessageDialog(rootPane, "Faltan datos por llenar","Error",JOptionPane.ERROR_MESSAGE);
-            return false;
+            evt.consume();
         }
-        else
-        {
-            return true;
-        }
-    }
-    
-    private void itemRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegresarActionPerformed
-        Info_Frame info = new Info_Frame();
-        info.show();
-        this.dispose();
-    }//GEN-LAST:event_itemRegresarActionPerformed
+    }//GEN-LAST:event_txtPhoneKeyTyped
 
     private void txtBroxelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBroxelKeyTyped
         //Solo numeros y espacio
@@ -695,6 +535,30 @@ public class AddEmployee extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtBroxelKeyTyped
+
+    private void txtClaveIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveIKeyTyped
+        //Solo numeros
+        if(!Character.isDigit(evt.getKeyChar()))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtClaveIKeyTyped
+
+    private void txtCreditIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCreditIKeyTyped
+        //Solo numeros
+        if(!Character.isDigit(evt.getKeyChar()))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCreditIKeyTyped
+
+    private void txtBeneficiaryPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBeneficiaryPhoneKeyTyped
+        //Solo numeros y espacio
+        if(!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar()))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtBeneficiaryPhoneKeyTyped
 
     private void rbtnActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnActiveActionPerformed
         if(rbtnActive.isSelected())
@@ -712,219 +576,25 @@ public class AddEmployee extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rbtnInactiveActionPerformed
 
-    private void txtBeneficiaryPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBeneficiaryPhoneKeyTyped
-        //Solo numeros y espacio
-        if(!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar()))
-        {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtBeneficiaryPhoneKeyTyped
-
-    private void txtCreditIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCreditIKeyTyped
-        //Solo numeros
-        if(!Character.isDigit(evt.getKeyChar()))
-        {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtCreditIKeyTyped
-
     private void sliderRecommendedStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderRecommendedStateChanged
         lblPercent.setText(sliderRecommended.getValue() + "%");
     }//GEN-LAST:event_sliderRecommendedStateChanged
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        addRegister();
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void addRegister(){
-        PreparedStatement st;
-        ResultSet rs;
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String fNacimiento = sdf.format(calBirthday.getDate());
-        String fInicio = sdf.format(caldStart.getDate());
-        String fFin = sdf.format(caldFinish.getDate());
-        String fAltaIMSS = sdf.format(calRegisterIMSS.getDate());
-        
-        String fActual = lblCurrentDate.getText();
-        String nombre = txtName.getText();
-        String apellido = txtLastNime.getText();
-        String unidad = txtUnit.getText();
-        String telefono = txtPhone.getText();
-        String email = txtEmail.getText();
-        String nss = txtNSS.getText();
-        String curp = txtCurp.getText();
-        String rfc = txtRFC.getText();
-        String broxel = txtBroxel.getText();
-        String clave = txtClaveI.getText();
-        String direccion = txtDirection.getText();
-        String edoCivil = cboxCivilState.getName();
-        String cedula = txtCedula.getText();
-        String puesto = txtPosition.getText();
-        String departamento = txtDepartment.getText();
-        String credito = txtCreditI.getText();
-        String banco = txtBank.getText();
-        String bNombre = txtBeneficiaryName.getText();
-        String bTelefono = txtBeneficiaryPhone.getText();
-        String bParentesco = txtBeneficiaryRelation.getText();
-        String lNacimiento = txtBornPlace.getText();
-        String razones = txtReasons.getText();
-        String comentarios = txtComentaries.getText();
-        String sexo = (rbtnWoman.isSelected()) ? "Mujer" : "Hombre";
-        String vacunado = (chkVaccinated.getState()) ? "VACUNADO" : "REGISTRADO";
-        String estatus = (rbtnActive.isSelected()) ? "ACTIVO" : "INACTIVO";
-        String recomendable = (String.valueOf(sliderRecommended.getValue()));
-        String tipo = (rbtnRegister.isSelected()) ? "ALTA" : "REINGRESO";
-        
-        if(verifyFields())
-        {
-            String query = "INSERT INTO `employease`(`fecha_ingreso`, `nombre`, `apellido`, `unidad`, "
-                + "`telefono`, `correo`, `nss`, `curp`, `rfc`, `broxel`, `banco`, `clave_interbancaria`, `direccion`, `fecha_nacimiento`, "
-                + "`lugar_nacimiento`, `sexo`, `estado_civil`, `no_cedula`, `vacuna_covid`, `puesto`, `departamento`, `credito_infonavit`, "
-                + "`nombre_beneficiario`, `telefono_beneficiario`, `parentesco_beneficiario`, `estatus`, `motivo_baja`, `recomendable`, "
-                + "`motivo`, `tipo`, `fecha_alta_imss`, `fecha_inicio`, `fecha_baja`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            
-            try 
-            {
-                st = connection.getConectarDB().prepareStatement(query);
-                st.setDate(1, Date.valueOf(fActual));
-                st.setString(2, nombre);
-                st.setString(3, apellido);
-                st.setString(4, unidad);
-                st.setString(5, telefono);
-                st.setString(6, email);
-                st.setString(7, nss);
-                st.setString(8, curp);
-                st.setString(9, rfc);
-                st.setString(10, broxel);
-                st.setString(11, banco);
-                if(clave.trim().equals(""))
-                    st.setInt(12, 0);
-                else
-                    st.setInt(12, Integer.valueOf(clave));
-                st.setString(13, direccion);
-                st.setDate(14, Date.valueOf(fNacimiento));
-                st.setString(15, lNacimiento);
-                st.setString(16, sexo);
-                st.setString(17, edoCivil);
-                st.setString(18, cedula);
-                st.setString(19, vacunado);
-                st.setString(20, puesto);
-                st.setString(21, departamento);
-                st.setString(22, credito);
-                st.setString(23, bNombre);
-                st.setString(24, bTelefono);
-                st.setString(25, bParentesco);
-                st.setString(26, estatus);
-                st.setString(27, razones);
-                st.setString(28, recomendable);
-                st.setString(29, comentarios);
-                st.setString(30, tipo);
-                st.setDate(31, Date.valueOf(fAltaIMSS));
-                st.setDate(32, Date.valueOf(fInicio));
-                st.setDate(33, Date.valueOf(fFin));
-
-                if(st.executeUpdate() != 0)
-                {
-                    JOptionPane.showMessageDialog(rootPane, "Se añadió el empleado con éxito");
-                    //Cerrar pestaña
-                    Info_Frame info = new Info_Frame();
-                    info.show();
-                    this.dispose();
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(rootPane, "Error al añadir el empleado");
-                }
-            } 
-            catch (Exception e) 
-            {
-                System.out.println(e.toString());
-            }
-        }
-    }
-    
-    private void loadData(){
-        PreparedStatement st;
-        ResultSet rs;
-        String query = "SELECT MAX(id_empleado) FROM `employease`";
-        
-        try 
-        {
-            st = connection.getConectarDB().prepareStatement(query);
-            rs = st.executeQuery();
-            
-            if(rs.next())
-            {
-                int id = rs.getInt(1);
-                lblID.setText(String.valueOf(id + 1)); //Next ID
-            }
-            
-            lblCurrentDate.setText(LocalDate.now().toString()); //Current date
-        } 
-        catch (Exception e) 
-        {
-            System.out.println(e.toString());
-        }
-        
-        //NO MOVER
-        //not null dates
-        caldStart.setDate(Date.valueOf(LocalDate.of(0, Month.JANUARY, 1)));
-        caldFinish.setDate(Date.valueOf(LocalDate.of(0, Month.JANUARY, 1)));
-        calRegisterIMSS.setDate(Date.valueOf(LocalDate.of(0, Month.JANUARY, 1)));
-    }
-    
-    private void txtClaveIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveIKeyTyped
-        //Solo numeros
-        if(!Character.isDigit(evt.getKeyChar()))
-        {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtClaveIKeyTyped
-
-    private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
-        //Solo numeros y espacio
-        if(!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar()))
-        {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtPhoneKeyTyped
-
-    public static void main(String args[]) {
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddEmployee().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.ButtonGroup btnGroupEstatus;
-    private javax.swing.ButtonGroup btnGroupSexos;
-    private javax.swing.ButtonGroup btnGroupTipo;
     private com.toedter.calendar.JCalendar calBirthday;
     private com.toedter.calendar.JDateChooser calRegisterIMSS;
     private com.toedter.calendar.JDateChooser caldFinish;
     private com.toedter.calendar.JDateChooser caldStart;
     private javax.swing.JComboBox<String> cboxCivilState;
     private java.awt.Checkbox chkVaccinated;
-    private javax.swing.JMenuItem itemRegresar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -934,8 +604,6 @@ public class AddEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -945,28 +613,14 @@ public class AddEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private java.awt.Label label1;
-    private javax.swing.JLabel lblCurrentDate;
-    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblPercent;
     private javax.swing.JRadioButton rbtnActive;
     private javax.swing.JRadioButton rbtnInactive;

@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author mario
  */
-public class QAFrame extends javax.swing.JFrame {
+public class FramePreguntas extends javax.swing.JFrame {
 
     /**
      * Creates new form qAFrame
      */
-    public QAFrame() {
+    public FramePreguntas() {
         initComponents();
     }
 
@@ -185,7 +185,7 @@ public class QAFrame extends javax.swing.JFrame {
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
 
         itemReturn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
         itemReturn.setText("Regresar");
@@ -206,7 +206,7 @@ public class QAFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Editar");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -252,14 +252,14 @@ public class QAFrame extends javax.swing.JFrame {
         int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres cerrar sesión?","Opciones",JOptionPane.YES_NO_OPTION);
         if(opc==0)
         {
-            StartSesion_Frame sSF = new StartSesion_Frame();
+            FrameInicioSesion sSF = new FrameInicioSesion();
             sSF.show();
             this.dispose();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void itemReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReturnActionPerformed
-        Info_Frame info = new Info_Frame();
+        FrameInfoEmpleado info = new FrameInfoEmpleado();
         info.show();
         this.dispose();
     }//GEN-LAST:event_itemReturnActionPerformed
@@ -281,14 +281,26 @@ public class QAFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(QAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(QAFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -297,7 +309,7 @@ public class QAFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new QAFrame().setVisible(true);
+                new FramePreguntas().setVisible(true);
             }
         });
     }

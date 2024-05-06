@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author mario
  */
-public class Documentation_Frame extends javax.swing.JFrame {
+public class FrameDocumentacion extends javax.swing.JFrame {
 
     /**
      * Creates new form documentation_Frame
      */
-    public Documentation_Frame() {
+    public FrameDocumentacion() {
         initComponents();
     }
 
@@ -114,7 +114,7 @@ public class Documentation_Frame extends javax.swing.JFrame {
 
         jButton2.setText("Descargar");
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
 
         itemRegresar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
         itemRegresar.setText("Regresar");
@@ -135,7 +135,7 @@ public class Documentation_Frame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Editar");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -202,14 +202,14 @@ public class Documentation_Frame extends javax.swing.JFrame {
         int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres cerrar sesión?","Opciones",JOptionPane.YES_NO_OPTION);
         if(opc==0)
         {
-            StartSesion_Frame sSF = new StartSesion_Frame();
+            FrameInicioSesion sSF = new FrameInicioSesion();
             sSF.show();
             this.dispose();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void itemRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegresarActionPerformed
-        Info_Frame info = new Info_Frame();
+        FrameInfoEmpleado info = new FrameInfoEmpleado();
         info.show();
         this.dispose();
     }//GEN-LAST:event_itemRegresarActionPerformed
@@ -235,14 +235,18 @@ public class Documentation_Frame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Documentation_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDocumentacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Documentation_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDocumentacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Documentation_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDocumentacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Documentation_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDocumentacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -251,7 +255,7 @@ public class Documentation_Frame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Documentation_Frame().setVisible(true);
+                new FrameDocumentacion().setVisible(true);
             }
         });
     }

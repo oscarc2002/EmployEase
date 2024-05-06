@@ -8,7 +8,7 @@ public class SQLConnection {
     {
         String host = "localhost";
         String puerto = "3306";
-        String nameDB = "smi";
+        String nameDB = "smi_test";
         
         String usuario = "root";
         String pass = "";

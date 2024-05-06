@@ -5,11 +5,11 @@ import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class StartSesion_Frame extends javax.swing.JFrame {
+public class FrameInicioSesion extends javax.swing.JFrame {
 
     SQLConnection connection = new SQLConnection();
 
-    public StartSesion_Frame() {
+    public FrameInicioSesion() {
         initComponents();
     }
 
@@ -180,7 +180,7 @@ public class StartSesion_Frame extends javax.swing.JFrame {
             rs = st.executeQuery();
 
             if (rs.next()) {
-                Info_Frame info = new Info_Frame();
+                FrameInfoEmpleado info = new FrameInfoEmpleado();
                 info.show();
                 this.dispose();
             } else {
@@ -192,7 +192,7 @@ public class StartSesion_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStartSesionActionPerformed
 
     private void jButton3btnStartSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3btnStartSesionActionPerformed
-        ForgotPwd_Frame fpwd = new ForgotPwd_Frame();
+        FrameContraseñaOlvidada fpwd = new FrameContraseñaOlvidada();
         fpwd.show();
         this.dispose();
     }//GEN-LAST:event_jButton3btnStartSesionActionPerformed
@@ -202,7 +202,7 @@ public class StartSesion_Frame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StartSesion_Frame().setVisible(true);
+                new FrameInicioSesion().setVisible(true);
             }
         });
     }
