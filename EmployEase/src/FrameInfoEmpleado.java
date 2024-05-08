@@ -5,13 +5,13 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Info_Frame extends javax.swing.JFrame {
+public class FrameInfoEmpleado extends javax.swing.JFrame {
 
     SQLConnection connection = new SQLConnection();
     int id = 0;
     String nombre = "";
     
-    public Info_Frame() {
+    public FrameInfoEmpleado() {
         initComponents();
         loadData("where `estatus` = 'ACTIVO'");
         adjustSize();
@@ -230,7 +230,7 @@ public class Info_Frame extends javax.swing.JFrame {
 
         lblNombre.setText("Ninguno");
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
 
         itemDocumentation.setText("Documentación");
         itemDocumentation.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +258,7 @@ public class Info_Frame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Editar");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -359,7 +359,7 @@ public class Info_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        AddEmployee add = new AddEmployee();
+        FrameAñadirEmpleado add = new FrameAñadirEmpleado();
         add.show();
         this.dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -368,7 +368,7 @@ public class Info_Frame extends javax.swing.JFrame {
         int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres cerrar sesión?","Opciones",JOptionPane.YES_NO_OPTION);
         if(opc==0)
         {
-            StartSesion_Frame st = new StartSesion_Frame();
+            FrameInicioSesion st = new FrameInicioSesion();
             st.show();
             this.dispose();
         }
@@ -376,13 +376,13 @@ public class Info_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_itemCloseSessionActionPerformed
 
     private void itemDocumentationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDocumentationActionPerformed
-        Documentation_Frame df = new Documentation_Frame();
+        FrameDocumentacion df = new FrameDocumentacion();
         df.show();
         this.dispose();
     }//GEN-LAST:event_itemDocumentationActionPerformed
 
     private void itemQAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemQAActionPerformed
-        QAFrame qa = new QAFrame();
+        FramePreguntas qa = new FramePreguntas();
         qa.show();
         this.dispose();
     }//GEN-LAST:event_itemQAActionPerformed
@@ -537,21 +537,20 @@ public class Info_Frame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Info_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameInfoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Info_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameInfoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Info_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameInfoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Info_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameInfoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Info_Frame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrameInfoEmpleado().setVisible(true);
         });
     }
 

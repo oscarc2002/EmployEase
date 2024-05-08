@@ -1,14 +1,15 @@
+
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class StartSesion_Frame extends javax.swing.JFrame {
+public class FrameInicioSesion extends javax.swing.JFrame {
 
     SQLConnection connection = new SQLConnection();
-    
-    public StartSesion_Frame() {
+
+    public FrameInicioSesion() {
         initComponents();
     }
 
@@ -23,11 +24,11 @@ public class StartSesion_Frame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -36,9 +37,9 @@ public class StartSesion_Frame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Inicio de Sesión");
 
-        txtUserName.setForeground(new java.awt.Color(0, 0, 0));
         txtUserName.setName("txtUserName"); // NOI18N
         txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -46,13 +47,6 @@ public class StartSesion_Frame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUserNameFocusLost(evt);
-            }
-        });
-
-        jButton1.setText("Olvidé mi contraseña");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -71,11 +65,23 @@ public class StartSesion_Frame extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Contraseña:");
+        jLabel2.setText("Contraseña");
 
-        jLabel3.setText("Nombre de usuario:");
+        jLabel3.setText("Nombre de usuario");
 
-        jMenu1.setText("File");
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton3.setText("He olvidado mi contraseña");
+        jButton3.setBorder(null);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setName("btnStartSesion"); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3btnStartSesionActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Archivo");
 
         jMenuItem1.setText("Salir");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +93,7 @@ public class StartSesion_Frame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Editar");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -97,44 +103,35 @@ public class StartSesion_Frame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(60, 60, 60)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))
-                        .addGap(79, 79, 79)))
-                .addContainerGap(62, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(126, 126, 126))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(txtUserName)
+                    .addComponent(txtPassword)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,70 +153,63 @@ public class StartSesion_Frame extends javax.swing.JFrame {
         }*/
     }//GEN-LAST:event_txtUserNameFocusLost
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ForgotPwd_Frame fpwd = new ForgotPwd_Frame();
-        fpwd.show();
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres salir?","Opciones",JOptionPane.YES_NO_OPTION);
-        if(opc==0)
-        {
+        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres salir?", "Opciones", JOptionPane.YES_NO_OPTION);
+        if (opc == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
+
+    }//GEN-LAST:event_txtPasswordKeyTyped
+
     private void btnStartSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartSesionActionPerformed
         PreparedStatement st;
         ResultSet rs;
-        
+
         String username = txtUserName.getText();
         String password = String.valueOf(txtPassword.getPassword());
-        
+
         String query = "SELECT * FROM `empleados` WHERE `user` = ? AND `password` = ?";
-        try 
-        {
+        try {
             st = connection.getConectarDB().prepareStatement(query);
-            
+
             st.setString(1, username);
             st.setString(2, password);
             rs = st.executeQuery();
-            
-            if(rs.next())
-            {
-                Info_Frame info = new Info_Frame();
+
+            if (rs.next()) {
+                FrameInfoEmpleado info = new FrameInfoEmpleado();
                 info.show();
                 this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La contraseña o el usuario son incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            else
-            {
-                JOptionPane.showMessageDialog(rootPane, "La contraseña o el usuario son incorrectos","Error",JOptionPane.ERROR_MESSAGE);
-            }
-        } 
-        catch (Exception e) 
-        {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
     }//GEN-LAST:event_btnStartSesionActionPerformed
 
-    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
-        
-    }//GEN-LAST:event_txtPasswordKeyTyped
+    private void jButton3btnStartSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3btnStartSesionActionPerformed
+        FrameContraseñaOlvidada fpwd = new FrameContraseñaOlvidada();
+        fpwd.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton3btnStartSesionActionPerformed
 
     public static void main(String args[]) {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StartSesion_Frame().setVisible(true);
+                new FrameInicioSesion().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
