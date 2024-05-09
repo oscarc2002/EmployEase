@@ -69,8 +69,8 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="rbtnRegister" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
-                                      <Component id="rbtnRestart" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="rbtnEntry" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="rbtnReinstated" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                               </Group>
@@ -120,7 +120,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="txtClaveI" alignment="0" pref="229" max="32767" attributes="0"/>
+                                              <Component id="txtClaveInter" alignment="0" pref="229" max="32767" attributes="0"/>
                                               <Component id="txtCurp" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtPhone" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel11" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
@@ -134,7 +134,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel25" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtLastNime" alignment="0" pref="225" max="32767" attributes="0"/>
+                                              <Component id="txtLastName" alignment="0" pref="225" max="32767" attributes="0"/>
                                               <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtRFC" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -165,7 +165,7 @@
                                           <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="txtBeneficiaryRelation" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtBank" alignment="0" pref="221" max="32767" attributes="0"/>
+                                              <Component id="txtBanco" alignment="0" pref="221" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="txtPosition" alignment="0" max="32767" attributes="0"/>
                                       </Group>
@@ -225,7 +225,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtLastNime" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtLastName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtUnit" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -260,7 +260,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtClaveI" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtClaveInter" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbtnMan" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbtnWoman" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cboxCivilState" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -296,7 +296,7 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtCreditI" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtBank" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtBanco" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtBeneficiaryName" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -366,9 +366,9 @@
                                   <Component id="sliderRecommended" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="rbtnRegister" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtnEntry" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rbtnRestart" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtnReinstated" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="47" max="32767" attributes="0"/>
@@ -438,9 +438,9 @@
             <Property name="text" type="java.lang.String" value="Clave interbancaria:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtClaveI">
+        <Component class="javax.swing.JTextField" name="txtClaveInter">
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtClaveIKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtClaveInterKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
@@ -496,9 +496,9 @@
             <Property name="text" type="java.lang.String" value="Apellidos (*):"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtLastNime">
+        <Component class="javax.swing.JTextField" name="txtLastName">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtBank">
+        <Component class="javax.swing.JTextField" name="txtBanco">
         </Component>
         <Component class="javax.swing.JTextField" name="txtBeneficiaryRelation">
         </Component>
@@ -549,12 +549,12 @@
         <Component class="javax.swing.JRadioButton" name="rbtnMan">
           <Properties>
             <Property name="selected" type="boolean" value="true"/>
-            <Property name="text" type="java.lang.String" value="Hombre"/>
+            <Property name="text" type="java.lang.String" value="Masculino"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbtnWoman">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mujer"/>
+            <Property name="text" type="java.lang.String" value="Femenino"/>
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JCalendar" name="calBirthday">
@@ -627,13 +627,13 @@
             <Property name="text" type="java.lang.String" value="Tipo de registro:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtnRegister">
+        <Component class="javax.swing.JRadioButton" name="rbtnEntry">
           <Properties>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Alta"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtnRestart">
+        <Component class="javax.swing.JRadioButton" name="rbtnReinstated">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reingreso"/>
           </Properties>

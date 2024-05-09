@@ -1,12 +1,14 @@
+package employeasepkg;
+
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-public class FrameContraseñaOlvidada extends javax.swing.JFrame {
+public class FrameClaveOlvidada extends javax.swing.JFrame {
 
     /**
      * Creates new form forgotPwd_Frame
      */
-    public FrameContraseñaOlvidada() {
+    public FrameClaveOlvidada() {
         initComponents();
     }
 
@@ -141,18 +143,16 @@ public class FrameContraseñaOlvidada extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        if(jTextField1.getText().equals("Correo electronico"))
-        {
+        if (jTextField1.getText().equals("Correo electronico")) {
             jTextField1.setText("");
-            jTextField1.setForeground(new Color(0,0,0));
+            jTextField1.setForeground(new Color(0, 0, 0));
         }
     }//GEN-LAST:event_jTextField1FocusGained
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(jTextField1.getText().equals(""))
-        {
+        if (jTextField1.getText().equals("")) {
             jTextField1.setText("Correo electronico");
-            jTextField1.setForeground(new Color(153,153,153));
+            jTextField1.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jTextField1FocusLost
 
@@ -163,9 +163,8 @@ public class FrameContraseñaOlvidada extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres salir?","Opciones",JOptionPane.YES_NO_OPTION);
-        if(opc==0)
-        {
+        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres salir?", "Opciones", JOptionPane.YES_NO_OPTION);
+        if (opc == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -187,14 +186,30 @@ public class FrameContraseñaOlvidada extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameContraseñaOlvidada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameClaveOlvidada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameContraseñaOlvidada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameClaveOlvidada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameContraseñaOlvidada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameClaveOlvidada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameContraseñaOlvidada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameClaveOlvidada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -215,7 +230,7 @@ public class FrameContraseñaOlvidada extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameContraseñaOlvidada().setVisible(true);
+                new FrameClaveOlvidada().setVisible(true);
             }
         });
     }

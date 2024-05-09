@@ -1,3 +1,5 @@
+package employeasepkg;
+
 import com.mysql.cj.x.protobuf.MysqlxResultset;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -5,22 +7,23 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class FrameInfoEmpleado extends javax.swing.JFrame {
+public class FrameTablaEmpleados extends javax.swing.JFrame {
 
-    SQLConnection connection = new SQLConnection();
-    int id = 0;
+    ConexionSQL connection = new ConexionSQL();
+    int idEmpleado = 0;
     String nombre = "";
-    
-    public FrameInfoEmpleado() {
+
+    public FrameTablaEmpleados() {
         initComponents();
         loadData("where `estatus` = 'ACTIVO'");
         adjustSize();
     }
-    
-    private void adjustSize(){
+
+    private void adjustSize() {
         tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
-        for(int i = 1; i < 34; i++)
+        for (int i = 1; i < 34; i++) {
             tableData.getColumnModel().getColumn(i).setPreferredWidth(130);
+        }
     }
 
     /**
@@ -173,7 +176,7 @@ public class FrameInfoEmpleado extends javax.swing.JFrame {
             }
         });
 
-        btnActualizar.setText("Actualizar");
+        btnActualizar.setText("Modificar");
         btnActualizar.setEnabled(false);
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,49 +333,47 @@ public class FrameInfoEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void deleteRegister(){
+    private void deleteRegister() {
         PreparedStatement st;
         ResultSet rs;
-        
+
         try {
-            String query = "delete from `employease` where `id_empleado` = ?" ;
-            
+            String query = "delete from `employease` where `id_empleado` = ?";
+
             st = connection.getConectarDB().prepareStatement(query);
-            st.setInt(1, id);
-            
-            if(st.executeUpdate() > 0){
+            st.setInt(1, idEmpleado);
+
+            if (st.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(rootPane, "Registro eliminado");
             }
-            
+
             loadData("");
         } catch (Exception e) {
         }
     }
-    
+
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres eliminar a "+ nombre + " con id: " + id + "?",
-                "Opciones",JOptionPane.YES_NO_OPTION);
-        if(opc==JOptionPane.YES_OPTION)
-        {
+        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres eliminar a " + nombre + " con id: " + idEmpleado + "?",
+                "Opciones", JOptionPane.YES_NO_OPTION);
+        if (opc == JOptionPane.YES_OPTION) {
             deleteRegister();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        FrameAñadirEmpleado add = new FrameAñadirEmpleado();
+        FrameAgregarEmpleado add = new FrameAgregarEmpleado();
         add.show();
         this.dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void itemCloseSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCloseSessionActionPerformed
-        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres cerrar sesión?","Opciones",JOptionPane.YES_NO_OPTION);
-        if(opc==0)
-        {
+        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres cerrar sesión?", "Opciones", JOptionPane.YES_NO_OPTION);
+        if (opc == 0) {
             FrameInicioSesion st = new FrameInicioSesion();
             st.show();
             this.dispose();
         }
-        
+
     }//GEN-LAST:event_itemCloseSessionActionPerformed
 
     private void itemDocumentationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDocumentationActionPerformed
@@ -387,21 +388,21 @@ public class FrameInfoEmpleado extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_itemQAActionPerformed
 
-    private void loadData(String where){
+    private void loadData(String where) {
         PreparedStatement st;
         ResultSet rs;
-        
+
         try {
             DefaultTableModel tblModel = (DefaultTableModel) tableData.getModel();
             tblModel.setRowCount(0);
             String query = "select * from `employease` " + where;
-            
+
             st = connection.getConectarDB().prepareStatement(query);
             rs = st.executeQuery(query);
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 //Recolectar datos
-                
+
                 Date fecha_r = rs.getDate("fecha_ingreso");
                 int id = rs.getInt("id_empleado");
                 String nombre = rs.getString("nombre");
@@ -436,88 +437,95 @@ public class FrameInfoEmpleado extends javax.swing.JFrame {
                 Date fecha_a = rs.getDate(32);
                 Date fecha_i = rs.getDate(33);
                 Date fecha_b = rs.getDate(34);
-                
+
                 //Datos                
-                tblModel.addRow(new Object[]{String.valueOf(id), String.valueOf(fecha_r),nombre, apellido,
-                unidad,puesto,departamento,telefono,correo,nss,curp,rfc,broxel,banco, String.valueOf(clave_i),direccion,
-                String.valueOf(fecha_n),lugar_nacimiento,sexo,estado_civil,no_cedula,vacuna_covid,credito_infonavit,nombre_beneficiario,
-                telefono_beneficiario,parentesco_beneficiario, estatus,motivo_baja,motivo,recomendable,tipo, String.valueOf(fecha_a),
-                String.valueOf(fecha_i), String.valueOf(fecha_b)});
+                tblModel.addRow(new Object[]{String.valueOf(id), String.valueOf(fecha_r), nombre, apellido,
+                    unidad, puesto, departamento, telefono, correo, nss, curp, rfc, broxel, banco, String.valueOf(clave_i), direccion,
+                    String.valueOf(fecha_n), lugar_nacimiento, sexo, estado_civil, no_cedula, vacuna_covid, credito_infonavit, nombre_beneficiario,
+                    telefono_beneficiario, parentesco_beneficiario, estatus, motivo_baja, motivo, recomendable, tipo, String.valueOf(fecha_a),
+                    String.valueOf(fecha_i), String.valueOf(fecha_b)});
             }
-            
+
         } catch (Exception e) {
         }
     }
-    
+
     private void txtIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyReleased
-        if(txtID.getText().trim().equals(""))
+        if (txtID.getText().trim().equals("")) {
             loadData("");
-        else
+        } else {
             loadData("where `id_empleado` = " + txtID.getText().trim());
+        }
         chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtIDKeyReleased
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
         String text = "'%" + txtNombre.getText().trim() + "%'";
-        if(txtNombre.getText().trim().equals(""))
+        if (txtNombre.getText().trim().equals("")) {
             loadData("");
-        else
+        } else {
             loadData("where `nombre` like " + text);
+        }
         chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtNombreKeyReleased
 
     private void txtUnidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUnidadKeyReleased
         String text = "'%" + txtUnidad.getText().trim() + "%'";
-        if(txtUnidad.getText().trim().equals(""))
+        if (txtUnidad.getText().trim().equals("")) {
             loadData("");
-        else
+        } else {
             loadData("where `unidad` like " + text);
+        }
         chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtUnidadKeyReleased
 
     private void txtPuestoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuestoKeyReleased
         String text = "'%" + txtPuesto.getText().trim() + "%'";
-        if(txtPuesto.getText().trim().equals(""))
+        if (txtPuesto.getText().trim().equals("")) {
             loadData("");
-        else
+        } else {
             loadData("where `puesto` like " + text);
+        }
         chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtPuestoKeyReleased
 
     private void txtDepartamentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDepartamentoKeyReleased
         String text = "'%" + txtDepartamento.getText().trim() + "%'";
-        if(txtDepartamento.getText().trim().equals(""))
+        if (txtDepartamento.getText().trim().equals("")) {
             loadData("");
-        else
+        } else {
             loadData("where `departamento` like " + text);
+        }
         chkMostrarActivos.setSelected(false);
     }//GEN-LAST:event_txtDepartamentoKeyReleased
 
     private void chkMostrarActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarActivosActionPerformed
-        if(chkMostrarActivos.isSelected())
+        if (chkMostrarActivos.isSelected())
             loadData("where `estatus` = 'ACTIVO'");
         else
             loadData("");
     }//GEN-LAST:event_chkMostrarActivosActionPerformed
 
-    private void setButtons(boolean condition){
+    private void setButtons(boolean condition) {
         btnActualizar.setEnabled(condition);
         btnEliminar.setEnabled(condition);
         btnGenerar.setEnabled(condition);
     }
-    
+
     private void tableDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDataMouseClicked
         setButtons(true); //Activate bottons
-        
+
         int index = tableData.getSelectedRow();
         DefaultTableModel tblModel = (DefaultTableModel) tableData.getModel();
-        id = Integer.parseInt(tblModel.getValueAt(index, 0).toString());
+        idEmpleado = Integer.parseInt(tblModel.getValueAt(index, 0).toString());
         nombre = tblModel.getValueAt(index, 2).toString();
         lblNombre.setText(nombre);
     }//GEN-LAST:event_tableDataMouseClicked
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        
+        FrameEditarEmpleado editarEmpleado = new FrameEditarEmpleado(idEmpleado);
+        editarEmpleado.show();
+        this.dispose();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
@@ -537,20 +545,22 @@ public class FrameInfoEmpleado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameInfoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameTablaEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameInfoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameTablaEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameInfoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameTablaEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameInfoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameTablaEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new FrameInfoEmpleado().setVisible(true);
+            new FrameTablaEmpleados().setVisible(true);
         });
     }
 
