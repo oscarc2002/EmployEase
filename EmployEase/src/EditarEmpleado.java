@@ -1,21 +1,20 @@
-package employeasepkg;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+
 /**
  *
  * @author Mario
  */
-public class PanelEditarEmpleado extends javax.swing.JPanel {
+public class EditarEmpleado extends javax.swing.JPanel {
 
     /**
      * Creates new form EditarEmpleado
      */
-    public PanelEditarEmpleado() {
+    public EditarEmpleado() {
         initComponents();
-
+        
     }
 
     /**
@@ -41,7 +40,7 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         txtBroxel = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        txtClaveInter = new javax.swing.JTextField();
+        txtClaveI = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
@@ -55,8 +54,8 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
         jLabel22 = new javax.swing.JLabel();
         txtRFC = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        txtLastName = new javax.swing.JTextField();
-        txtBanco = new javax.swing.JTextField();
+        txtLastNime = new javax.swing.JTextField();
+        txtBank = new javax.swing.JTextField();
         txtBeneficiaryRelation = new javax.swing.JTextField();
         txtBeneficiaryName = new javax.swing.JTextField();
         txtDepartment = new javax.swing.JTextField();
@@ -85,8 +84,8 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
         sliderRecommended = new javax.swing.JSlider();
         lblPercent = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        rbtnEntry = new javax.swing.JRadioButton();
-        rbtnReinstated = new javax.swing.JRadioButton();
+        rbtnRegister = new javax.swing.JRadioButton();
+        rbtnRestart = new javax.swing.JRadioButton();
         jLabel39 = new javax.swing.JLabel();
         calRegisterIMSS = new com.toedter.calendar.JDateChooser();
         jLabel40 = new javax.swing.JLabel();
@@ -123,9 +122,9 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
 
         jLabel13.setText("Clave interbancaria:");
 
-        txtClaveInter.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtClaveI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtClaveInterKeyTyped(evt);
+                txtClaveIKeyTyped(evt);
             }
         });
 
@@ -172,9 +171,9 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
         jLabel31.setText("Fecha de nacimiento:");
 
         rbtnMan.setSelected(true);
-        rbtnMan.setText("Masculino");
+        rbtnMan.setText("Hombre");
 
-        rbtnWoman.setText("Femenino");
+        rbtnWoman.setText("Mujer");
 
         jLabel32.setText("Lugar de nacimiento:");
 
@@ -213,10 +212,10 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
 
         jLabel38.setText("Tipo de registro:");
 
-        rbtnEntry.setSelected(true);
-        rbtnEntry.setText("Alta");
+        rbtnRegister.setSelected(true);
+        rbtnRegister.setText("Alta");
 
-        rbtnReinstated.setText("Reingreso");
+        rbtnRestart.setText("Reingreso");
 
         jLabel39.setText("Fecha de alta del IMSS:");
 
@@ -258,8 +257,8 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel38)
-                                    .addComponent(rbtnEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rbtnReinstated, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(rbtnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rbtnRestart, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(43, 43, 43)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel32)
@@ -295,7 +294,7 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtClaveInter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                            .addComponent(txtClaveI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                                             .addComponent(txtCurp, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,7 +306,7 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                            .addComponent(txtLastNime, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                                             .addComponent(txtEmail)
                                             .addComponent(txtRFC)
                                             .addComponent(jLabel23)
@@ -333,7 +332,7 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
                                         .addComponent(jLabel17)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txtBeneficiaryRelation, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtBanco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
+                                            .addComponent(txtBank, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
                                         .addComponent(txtPosition))))
                             .addComponent(jLabel40))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +374,7 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLastNime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -404,7 +403,7 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtClaveInter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtClaveI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtnMan)
                     .addComponent(rbtnWoman)
                     .addComponent(cboxCivilState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -434,7 +433,7 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCreditI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtBeneficiaryName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -488,9 +487,9 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
                                 .addComponent(caldStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(sliderRecommended, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(rbtnEntry)
+                                .addComponent(rbtnRegister)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbtnReinstated)))
+                                .addComponent(rbtnRestart)))
                         .addContainerGap(47, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel36)
@@ -523,48 +522,55 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
 
     private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
         //Solo numeros y espacio
-        if (!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        if(!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar()))
+        {
             evt.consume();
         }
     }//GEN-LAST:event_txtPhoneKeyTyped
 
     private void txtBroxelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBroxelKeyTyped
         //Solo numeros y espacio
-        if (!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        if(!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar()))
+        {
             evt.consume();
         }
     }//GEN-LAST:event_txtBroxelKeyTyped
 
-    private void txtClaveInterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveInterKeyTyped
+    private void txtClaveIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveIKeyTyped
         //Solo numeros
-        if (!Character.isDigit(evt.getKeyChar())) {
+        if(!Character.isDigit(evt.getKeyChar()))
+        {
             evt.consume();
         }
-    }//GEN-LAST:event_txtClaveInterKeyTyped
+    }//GEN-LAST:event_txtClaveIKeyTyped
 
     private void txtCreditIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCreditIKeyTyped
         //Solo numeros
-        if (!Character.isDigit(evt.getKeyChar())) {
+        if(!Character.isDigit(evt.getKeyChar()))
+        {
             evt.consume();
         }
     }//GEN-LAST:event_txtCreditIKeyTyped
 
     private void txtBeneficiaryPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBeneficiaryPhoneKeyTyped
         //Solo numeros y espacio
-        if (!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        if(!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar()))
+        {
             evt.consume();
         }
     }//GEN-LAST:event_txtBeneficiaryPhoneKeyTyped
 
     private void rbtnActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnActiveActionPerformed
-        if (rbtnActive.isSelected()) {
+        if(rbtnActive.isSelected())
+        {
             txtReasons.setEnabled(false);
             txtComentaries.setEnabled(false);
         }
     }//GEN-LAST:event_rbtnActiveActionPerformed
 
     private void rbtnInactiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnInactiveActionPerformed
-        if (rbtnInactive.isSelected()) {
+        if(rbtnInactive.isSelected())
+        {
             txtReasons.setEnabled(true);
             txtComentaries.setEnabled(true);
         }
@@ -574,286 +580,6 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
         lblPercent.setText(sliderRecommended.getValue() + "%");
     }//GEN-LAST:event_sliderRecommendedStateChanged
 
-    //Métodos para acceder a componentes privados
-    public String getTxtBank() {
-        return txtBanco.getText();
-    }
-
-    public void setTxtBank(String text) {
-        txtBanco.setText(text);
-    }
-
-    public String getTxtBeneficiaryName() {
-        return txtBeneficiaryName.getText();
-    }
-
-    public void setTxtBeneficiaryName(String text) {
-        txtBeneficiaryName.setText(text);
-    }
-
-    public String getTxtBeneficiaryPhone() {
-        return txtBeneficiaryPhone.getText();
-    }
-
-    public void setTxtBeneficiaryPhone(String text) {
-        txtBeneficiaryPhone.setText(text);
-    }
-
-    public String getTxtBeneficiaryRelation() {
-        return txtBeneficiaryRelation.getText();
-    }
-
-    public void setTxtBeneficiaryRelation(String text) {
-        txtBeneficiaryRelation.setText(text);
-    }
-
-    public String getTxtBornPlace() {
-        return txtBornPlace.getText();
-    }
-
-    public void setTxtBornPlace(String text) {
-        txtBornPlace.setText(text);
-    }
-
-    public String getTxtBroxel() {
-        return txtBroxel.getText();
-    }
-
-    public void setTxtBroxel(String text) {
-        txtBroxel.setText(text);
-    }
-
-    public String getTxtCedula() {
-        return txtCedula.getText();
-    }
-
-    public void setTxtCedula(String text) {
-        txtCedula.setText(text);
-    }
-
-    public String getTxtClaveInter() {
-        return txtClaveInter.getText();
-    }
-
-    public void setTxtClaveInter(String text) {
-        txtClaveInter.setText(text);
-    }
-
-    public String getTxtCreditI() {
-        return txtCreditI.getText();
-    }
-
-    public void setTxtCreditI(String text) {
-        txtCreditI.setText(text);
-    }
-
-    public String getTxtCurp() {
-        return txtCurp.getText();
-    }
-
-    public void setTxtCurp(String text) {
-        txtCurp.setText(text);
-    }
-
-    public String getTxtDepartment() {
-        return txtDepartment.getText();
-    }
-
-    public void setTxtDepartment(String text) {
-        txtDepartment.setText(text);
-    }
-
-    public String getTxtDirection() {
-        return txtDirection.getText();
-    }
-
-    public void setTxtDirection(String text) {
-        txtDirection.setText(text);
-    }
-
-    public String getTxtEmail() {
-        return txtEmail.getText();
-    }
-
-    public void setTxtEmail(String text) {
-        txtEmail.setText(text);
-    }
-
-    public String getTxtLastName() {
-        return txtLastName.getText();
-    }
-
-    public void setTxtLastName(String text) {
-        txtLastName.setText(text);
-    }
-
-    public String getTxtNSS() {
-        return txtNSS.getText();
-    }
-
-    public void setTxtNSS(String text) {
-        txtNSS.setText(text);
-    }
-
-    public String getTxtName() {
-        return txtName.getText();
-    }
-
-    public void setTxtName(String text) {
-        txtName.setText(text);
-    }
-
-    public String getTxtPhone() {
-        return txtPhone.getText();
-    }
-
-    public void setTxtPhone(String text) {
-        txtPhone.setText(text);
-    }
-
-    public String getTxtPosition() {
-        return txtPosition.getText();
-    }
-
-    public void setTxtPosition(String text) {
-        txtPosition.setText(text);
-    }
-
-    public String getTxtRFC() {
-        return txtRFC.getText();
-    }
-
-    public void setTxtRFC(String text) {
-        txtRFC.setText(text);
-    }
-
-    public String getTxtReasons() {
-        return txtReasons.getText();
-    }
-
-    public void setTxtReasons(String text) {
-        txtReasons.setText(text);
-    }
-
-    public String getTxtUnit() {
-        return txtUnit.getText();
-    }
-
-    public void setTxtUnit(String text) {
-        txtUnit.setText(text);
-    }
-
-    public String getTxtComentaries() {
-        return txtComentaries.getText();
-    }
-
-    public void setTxtComentaries(String text) {
-        txtComentaries.setText(text);
-    }
-
-    public int getSliderRecommended() {
-        return sliderRecommended.getValue();
-    }
-
-    public void setSliderRecommended(int value) {
-        sliderRecommended.setValue(value);
-    }
-
-    public boolean isRbtnActiveSelected() {
-        return rbtnActive.isSelected();
-    }
-
-    public void setRbtnActiveSelected(boolean selected) {
-        rbtnActive.setSelected(selected);
-    }
-
-    public boolean isRbtnInactiveSelected() {
-        return rbtnInactive.isSelected();
-    }
-
-    public void setRbtnInactiveSelected(boolean selected) {
-        rbtnInactive.setSelected(selected);
-    }
-
-    public boolean isRbtnManSelected() {
-        return rbtnMan.isSelected();
-    }
-
-    public void setRbtnManSelected(boolean selected) {
-        rbtnMan.setSelected(selected);
-    }
-
-    public boolean isRbtnEntrySelected() {
-        return rbtnEntry.isSelected();
-    }
-
-    public void setRbtnEntrySelected(boolean selected) {
-        rbtnEntry.setSelected(selected);
-    }
-
-    public boolean isRbtnReinstatedSelected() {
-        return rbtnReinstated.isSelected();
-    }
-
-    public void setRbtnReinstatedSelected(boolean selected) {
-        rbtnReinstated.setSelected(selected);
-    }
-
-    public boolean isRbtnWomanSelected() {
-        return rbtnWoman.isSelected();
-    }
-
-    public void setRbtnWomanSelected(boolean selected) {
-        rbtnWoman.setSelected(selected);
-    }
-
-    public String getCboxCivilStateSelectedItem() {
-        return (String) cboxCivilState.getSelectedItem();
-    }
-
-    public void setCboxCivilStateSelectedItem(String item) {
-        cboxCivilState.setSelectedItem(item);
-    }
-
-    public boolean isChkVaccinatedChecked() {
-        return chkVaccinated.getState();
-    }
-
-    public void setChkVaccinatedChecked(boolean checked) {
-        chkVaccinated.setState(checked);
-    }
-
-    public java.util.Date getCalBirthdayDate() {
-        return calBirthday.getDate();
-    }
-
-    public void setCalBirthdayDate(java.util.Date date) {
-        calBirthday.setDate(date);
-    }
-
-    public java.util.Date getCalRegisterIMSSDate() {
-        return calRegisterIMSS.getDate();
-    }
-
-    public void setCalRegisterIMSSDate(java.util.Date date) {
-        calRegisterIMSS.setDate(date);
-    }
-
-    public java.util.Date getCaldFinishDate() {
-        return caldFinish.getDate();
-    }
-
-    public void setCaldFinishDate(java.util.Date date) {
-        caldFinish.setDate(date);
-    }
-
-    public java.util.Date getCaldStartDate() {
-        return caldStart.getDate();
-    }
-
-    public void setCaldStartDate(java.util.Date date) {
-        caldStart.setDate(date);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JCalendar calBirthday;
@@ -897,27 +623,27 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblPercent;
     private javax.swing.JRadioButton rbtnActive;
-    private javax.swing.JRadioButton rbtnEntry;
     private javax.swing.JRadioButton rbtnInactive;
     private javax.swing.JRadioButton rbtnMan;
-    private javax.swing.JRadioButton rbtnReinstated;
+    private javax.swing.JRadioButton rbtnRegister;
+    private javax.swing.JRadioButton rbtnRestart;
     private javax.swing.JRadioButton rbtnWoman;
     private javax.swing.JSlider sliderRecommended;
-    private javax.swing.JTextField txtBanco;
+    private javax.swing.JTextField txtBank;
     private javax.swing.JTextField txtBeneficiaryName;
     private javax.swing.JTextField txtBeneficiaryPhone;
     private javax.swing.JTextField txtBeneficiaryRelation;
     private javax.swing.JTextField txtBornPlace;
     private javax.swing.JTextField txtBroxel;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtClaveInter;
+    private javax.swing.JTextField txtClaveI;
     private javax.swing.JTextArea txtComentaries;
     private javax.swing.JTextField txtCreditI;
     private javax.swing.JTextField txtCurp;
     private javax.swing.JTextField txtDepartment;
     private javax.swing.JTextField txtDirection;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtLastNime;
     private javax.swing.JTextField txtNSS;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhone;
