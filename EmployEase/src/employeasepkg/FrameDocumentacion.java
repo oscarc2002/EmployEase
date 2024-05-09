@@ -1,3 +1,4 @@
+package employeasepkg;
 
 import javax.swing.JOptionPane;
 
@@ -5,7 +6,6 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author mario
@@ -199,9 +199,8 @@ public class FrameDocumentacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres cerrar sesión?","Opciones",JOptionPane.YES_NO_OPTION);
-        if(opc==0)
-        {
+        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres cerrar sesión?", "Opciones", JOptionPane.YES_NO_OPTION);
+        if (opc == 0) {
             FrameInicioSesion sSF = new FrameInicioSesion();
             sSF.show();
             this.dispose();
@@ -209,7 +208,7 @@ public class FrameDocumentacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void itemRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegresarActionPerformed
-        FrameInfoEmpleado info = new FrameInfoEmpleado();
+        FrameTablaEmpleados info = new FrameTablaEmpleados();
         info.show();
         this.dispose();
     }//GEN-LAST:event_itemRegresarActionPerformed
