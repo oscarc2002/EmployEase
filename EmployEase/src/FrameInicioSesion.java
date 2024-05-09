@@ -1,4 +1,3 @@
-package employeasepkg;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -8,7 +7,7 @@ import java.sql.ResultSet;
 
 public class FrameInicioSesion extends javax.swing.JFrame {
 
-    ConexionSQL connection = new ConexionSQL();
+    SQLConnection connection = new SQLConnection();
 
     public FrameInicioSesion() {
         initComponents();
@@ -181,7 +180,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
             rs = st.executeQuery();
 
             if (rs.next()) {
-                FrameTablaEmpleados info = new FrameTablaEmpleados();
+                FrameInfoEmpleado info = new FrameInfoEmpleado();
                 info.show();
                 this.dispose();
             } else {
@@ -193,7 +192,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStartSesionActionPerformed
 
     private void jButton3btnStartSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3btnStartSesionActionPerformed
-        FrameClaveOlvidada fpwd = new FrameClaveOlvidada();
+        FrameContraseñaOlvidada fpwd = new FrameContraseñaOlvidada();
         fpwd.show();
         this.dispose();
     }//GEN-LAST:event_jButton3btnStartSesionActionPerformed
