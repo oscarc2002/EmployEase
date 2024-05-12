@@ -1,0 +1,16 @@
+Al crear un nuevo frame debe tener esta estructura. SIEMPRE DEBE HABER UNA VARIABLE idUser
+
+///////////////////////////////////////////////
+int idUser;
+
+public Frame() {
+        initComponents();
+        loadData();
+}
+
+public Frame(int idUser) {
+        initComponents();
+        loadData();
+        this.idUser = idUser;
+}
+//////////////////////////////////////////////
