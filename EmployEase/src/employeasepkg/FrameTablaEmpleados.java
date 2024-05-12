@@ -12,20 +12,44 @@ import javax.swing.table.DefaultTableModel;
 public class FrameTablaEmpleados extends javax.swing.JFrame {
 
     ConexionSQL connection = new ConexionSQL();
-    int idEmpleado = 0;
+    int idEmpleado = 0, idUser = 0;
     String nombre_empleado = "";
     Format darFormato = new SimpleDateFormat("yyyy-MM-dd");
 
-    public FrameTablaEmpleados() {
+    public FrameTablaEmpleados(int idUser) {
         initComponents();
         loadData("where `estatus` = 'ACTIVO'");
         adjustSize();
+        this.idUser = idUser;
+        adminAdjust();
     }
 
     private void adjustSize() {
         tableData.getColumnModel().getColumn(0).setPreferredWidth(100);
         for (int i = 1; i < 34; i++) {
             tableData.getColumnModel().getColumn(i).setPreferredWidth(130);
+        }
+    }
+    
+    private void adminAdjust(){
+        PreparedStatement st;
+        ResultSet rs;
+
+        String query = "SELECT * FROM `empleados` WHERE `id_user` = ?";
+        try {
+            st = connection.getConectarDB().prepareStatement(query);
+            st.setInt(1, idUser);
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                if(rs.getInt("esAdmin") == 0){
+                    btnAgregar.setVisible(false);
+                    btnModificar.setVisible(false);
+                    btnEliminar.setVisible(false);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
     }
 
@@ -226,6 +250,11 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
 
         btnGenerar.setText("Generar contrato");
         btnGenerar.setEnabled(false);
+        btnGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarActionPerformed(evt);
+            }
+        });
 
         chkMostrarActivos.setSelected(true);
         chkMostrarActivos.setText("Mostrar solo activos");
@@ -380,7 +409,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        FrameAgregarEmpleado add = new FrameAgregarEmpleado();
+        FrameAgregarEmpleado add = new FrameAgregarEmpleado(idUser);
         add.show();
         this.dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -396,13 +425,13 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_itemCloseSessionActionPerformed
 
     private void itemDocumentationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDocumentationActionPerformed
-        FrameDocumentacion df = new FrameDocumentacion();
+        FrameDocumentacion df = new FrameDocumentacion(idUser);
         df.show();
         this.dispose();
     }//GEN-LAST:event_itemDocumentationActionPerformed
 
     private void itemQAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemQAActionPerformed
-        FramePreguntas qa = new FramePreguntas();
+        FramePreguntas qa = new FramePreguntas(idUser);
         qa.show();
         this.dispose();
     }//GEN-LAST:event_itemQAActionPerformed
@@ -558,10 +587,14 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_tableDataMouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        FrameEditarEmpleado editarEmpleado = new FrameEditarEmpleado(idEmpleado);
+        FrameEditarEmpleado editarEmpleado = new FrameEditarEmpleado(idUser,idEmpleado);
         editarEmpleado.show();
         this.dispose();
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
+        
+    }//GEN-LAST:event_btnGenerarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -595,7 +628,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new FrameTablaEmpleados().setVisible(true);
+            new FrameTablaEmpleados(0).setVisible(true);
         });
     }
 

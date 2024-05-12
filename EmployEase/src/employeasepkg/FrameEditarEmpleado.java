@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class FrameEditarEmpleado extends javax.swing.JFrame {
 
-    int idEmpleado;
+    int idEmpleado, idUser;
     ConexionSQL connection = new ConexionSQL();
 
     public FrameEditarEmpleado() {
@@ -18,10 +18,11 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
         loadData();
     }
 
-    public FrameEditarEmpleado(int id) {
+    public FrameEditarEmpleado(int idUser, int id) {
         this.idEmpleado = id;
         initComponents();
         loadData();
+        this.idUser = idUser;
     }
 
     /**
@@ -47,6 +48,9 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
         btnGroupSexos = new javax.swing.ButtonGroup();
         btnGroupEstatus = new javax.swing.ButtonGroup();
         btnGroupTipo = new javax.swing.ButtonGroup();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblCurrentDate = new javax.swing.JLabel();
@@ -58,7 +62,6 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itemRegresar = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         jLabel9.setText("Nombre(s):");
 
@@ -81,6 +84,12 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
         label1.setText("label1");
 
         jTextField35.setText("jTextField1");
+
+        jMenu3.setText("File");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,9 +131,6 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
         jMenu1.add(itemRegresar);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -178,7 +184,7 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegresarActionPerformed
-        FrameTablaEmpleados info = new FrameTablaEmpleados();
+        FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
         info.show();
         this.dispose();
     }//GEN-LAST:event_itemRegresarActionPerformed
@@ -299,7 +305,7 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
                 if (st.executeUpdate() != 0) {
                     JOptionPane.showMessageDialog(rootPane, "Se actualizó el empleado con éxito");
                     //Cerrar pestaña
-                    FrameTablaEmpleados info = new FrameTablaEmpleados();
+                    FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
                     info.show();
                     this.dispose();
                 } else {
@@ -386,8 +392,10 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField35;

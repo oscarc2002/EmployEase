@@ -190,7 +190,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
             rs = st.executeQuery();
 
             if (rs.next()) {
-                FrameTablaEmpleados info = new FrameTablaEmpleados();
+                FrameTablaEmpleados info = new FrameTablaEmpleados(rs.getInt("id_user"));
                 info.show();
                 this.dispose();
             } else {

@@ -2,21 +2,16 @@ package employeasepkg;
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author mario
- */
 public class FramePreguntas extends javax.swing.JFrame {
-
-    /**
-     * Creates new form qAFrame
-     */
+    int idUser;
+    
     public FramePreguntas() {
         initComponents();
+    }
+    
+    public FramePreguntas(int idUser) {
+        initComponents();
+        this.idUser = idUser;
     }
 
     /**
@@ -259,7 +254,7 @@ public class FramePreguntas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void itemReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReturnActionPerformed
-        FrameTablaEmpleados info = new FrameTablaEmpleados();
+        FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
         info.show();
         this.dispose();
     }//GEN-LAST:event_itemReturnActionPerformed

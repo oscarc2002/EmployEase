@@ -2,21 +2,16 @@ package employeasepkg;
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author mario
- */
 public class FrameDocumentacion extends javax.swing.JFrame {
-
-    /**
-     * Creates new form documentation_Frame
-     */
+    int idUser;
+    
     public FrameDocumentacion() {
         initComponents();
+    }
+    
+    public FrameDocumentacion(int idUser) {
+        initComponents();
+        this.idUser = idUser;
     }
 
     /**
@@ -209,7 +204,7 @@ public class FrameDocumentacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void itemRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegresarActionPerformed
-        FrameTablaEmpleados info = new FrameTablaEmpleados();
+        FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
         info.show();
         this.dispose();
     }//GEN-LAST:event_itemRegresarActionPerformed

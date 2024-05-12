@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package employeasepkg;
 
 import java.awt.HeadlessException;
@@ -14,20 +10,20 @@ import java.time.LocalDate;
 import java.time.Month;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Usuario
- */
 public class FrameAgregarEmpleado extends javax.swing.JFrame {
 
     ConexionSQL connection = new ConexionSQL();
-
-    /**
-     * Creates new form FrameAñadirEmpleado
-     */
+    int idUser;
+    
     public FrameAgregarEmpleado() {
         initComponents();
         loadData();
+    }
+
+    public FrameAgregarEmpleado(int idUser) {
+        initComponents();
+        loadData();
+        this.idUser = idUser;
     }
 
     /**
@@ -47,6 +43,9 @@ public class FrameAgregarEmpleado extends javax.swing.JFrame {
         lblCurrentDate = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         panelEmpleado = new employeasepkg.PanelEditarEmpleado();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +74,21 @@ public class FrameAgregarEmpleado extends javax.swing.JFrame {
 
         jLabel30.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel30.setText("Fecha de registro:");
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        jMenuItem1.setText("Regresar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemRegresarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,7 +128,7 @@ public class FrameAgregarEmpleado extends javax.swing.JFrame {
                     .addComponent(btnAdd))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,6 +138,12 @@ public class FrameAgregarEmpleado extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         addRegister();
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void mItemRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemRegresarActionPerformed
+        FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
+        info.show();
+        this.dispose();
+    }//GEN-LAST:event_mItemRegresarActionPerformed
 
     public boolean verifyFields() {
         String nombre = panelEmpleado.getTxtName();
@@ -227,7 +247,7 @@ public class FrameAgregarEmpleado extends javax.swing.JFrame {
                 if (st.executeUpdate() != 0) {
                     JOptionPane.showMessageDialog(rootPane, "Se añadió el empleado con éxito");
                     //Cerrar pestaña
-                    FrameTablaEmpleados info = new FrameTablaEmpleados();
+                    FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
                     info.show();
                     this.dispose();
                 } else {
@@ -308,6 +328,9 @@ public class FrameAgregarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblCurrentDate;
     private javax.swing.JLabel lblID;
     private employeasepkg.PanelEditarEmpleado panelEmpleado;
