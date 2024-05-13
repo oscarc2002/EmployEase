@@ -2,8 +2,6 @@ package employeasepkg;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -14,7 +12,6 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     ConexionSQL connection = new ConexionSQL();
     int idEmpleado = 0, idUser = 0;
     String nombre_empleado = "";
-    Format darFormato = new SimpleDateFormat("yyyy-MM-dd");
 
     public FrameTablaEmpleados(int idUser) {
         initComponents();
@@ -46,6 +43,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                     btnAgregar.setVisible(false);
                     btnModificar.setVisible(false);
                     btnEliminar.setVisible(false);
+                    menuEdit.setVisible(false);
                 }
             }
         } catch (Exception e) {
@@ -85,11 +83,14 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         btnGenerar = new javax.swing.JButton();
         chkMostrarActivos = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuFile = new javax.swing.JMenu();
         itemDocumentation = new javax.swing.JMenuItem();
         itemQA = new javax.swing.JMenuItem();
+        itemProfile = new javax.swing.JMenuItem();
         itemCloseSession = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuEdit = new javax.swing.JMenu();
+        itemAddUser = new javax.swing.JMenuItem();
+        itemReadUser = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -298,7 +299,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Archivo");
+        menuFile.setText("Archivo");
 
         itemDocumentation.setText("Documentación");
         itemDocumentation.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +307,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 itemDocumentationActionPerformed(evt);
             }
         });
-        jMenu1.add(itemDocumentation);
+        menuFile.add(itemDocumentation);
 
         itemQA.setText("Preguntas frecuentas");
         itemQA.addActionListener(new java.awt.event.ActionListener() {
@@ -314,7 +315,15 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 itemQAActionPerformed(evt);
             }
         });
-        jMenu1.add(itemQA);
+        menuFile.add(itemQA);
+
+        itemProfile.setText("Ver mi perfil");
+        itemProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemProfileActionPerformed(evt);
+            }
+        });
+        menuFile.add(itemProfile);
 
         itemCloseSession.setText("Cerrar sesión");
         itemCloseSession.addActionListener(new java.awt.event.ActionListener() {
@@ -322,12 +331,30 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 itemCloseSessionActionPerformed(evt);
             }
         });
-        jMenu1.add(itemCloseSession);
+        menuFile.add(itemCloseSession);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuFile);
 
-        jMenu2.setText("Editar");
-        jMenuBar1.add(jMenu2);
+        menuEdit.setText("Editar");
+
+        itemAddUser.setText("Añadir usuario");
+        itemAddUser.setName("itemAddUser"); // NOI18N
+        itemAddUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAddUserActionPerformed(evt);
+            }
+        });
+        menuEdit.add(itemAddUser);
+
+        itemReadUser.setText("Lista de usuarios");
+        itemReadUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemReadUserActionPerformed(evt);
+            }
+        });
+        menuEdit.add(itemReadUser);
+
+        jMenuBar1.add(menuEdit);
 
         setJMenuBar(jMenuBar1);
 
@@ -401,7 +428,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     }
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres eliminar a " + nombre_empleado + " con id: " + idEmpleado + "?",
+        int opc = JOptionPane.showConfirmDialog(null, "¿Seguro que quieres eliminar a " + nombre_empleado + " con id: " + idEmpleado + "?",
                 "Opciones", JOptionPane.YES_NO_OPTION);
         if (opc == JOptionPane.YES_OPTION) {
             deleteRegister();
@@ -596,6 +623,24 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnGenerarActionPerformed
 
+    private void itemAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAddUserActionPerformed
+        FrameAgregarUsuario frame = new FrameAgregarUsuario(idUser);
+        frame.show();
+        this.dispose();
+    }//GEN-LAST:event_itemAddUserActionPerformed
+
+    private void itemReadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReadUserActionPerformed
+        FrameTablaUsuarios frame = new FrameTablaUsuarios(idUser);
+        frame.show();
+        this.dispose();
+    }//GEN-LAST:event_itemReadUserActionPerformed
+
+    private void itemProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProfileActionPerformed
+        FramePerfilUsuario frame = new FramePerfilUsuario(idUser);
+        frame.show();
+        this.dispose();
+    }//GEN-LAST:event_itemProfileActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -638,9 +683,12 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JCheckBox chkMostrarActivos;
+    private javax.swing.JMenuItem itemAddUser;
     private javax.swing.JMenuItem itemCloseSession;
     private javax.swing.JMenuItem itemDocumentation;
+    private javax.swing.JMenuItem itemProfile;
     private javax.swing.JMenuItem itemQA;
+    private javax.swing.JMenuItem itemReadUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -648,13 +696,13 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JMenu menuEdit;
+    private javax.swing.JMenu menuFile;
     private javax.swing.JTable tableData;
     private javax.swing.JTextField txtDepartamento;
     private javax.swing.JTextField txtID;

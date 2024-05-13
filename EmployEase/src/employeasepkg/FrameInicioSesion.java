@@ -35,7 +35,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,8 +64,8 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         txtPassword.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtPassword.setName("txtPassword"); // NOI18N
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPasswordKeyTyped(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
             }
         });
 
@@ -97,9 +96,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Editar");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -170,11 +166,11 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
-
-    }//GEN-LAST:event_txtPasswordKeyTyped
-
     private void btnStartSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartSesionActionPerformed
+        startSesion();
+    }//GEN-LAST:event_btnStartSesionActionPerformed
+
+    private void startSesion(){
         PreparedStatement st;
         ResultSet rs;
 
@@ -199,13 +195,18 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-    }//GEN-LAST:event_btnStartSesionActionPerformed
-
+    }
+    
     private void jButton3btnStartSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3btnStartSesionActionPerformed
         FrameClaveOlvidada fpwd = new FrameClaveOlvidada();
         fpwd.show();
         this.dispose();
     }//GEN-LAST:event_jButton3btnStartSesionActionPerformed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER)
+            startSesion();
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -242,7 +243,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPasswordField txtPassword;
