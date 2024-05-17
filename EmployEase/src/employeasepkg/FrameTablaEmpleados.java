@@ -1,9 +1,11 @@
 package employeasepkg;
 
+import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.Date;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -201,11 +203,11 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID del empleado", "Fecha de ingreso", "Nombre", "Apellido", "Unidad", "Puesto", "Departamento", "Teléfono", "Correo", "NSS", "Curp", "RFC", "Broxel", "Banco", "Clave interbancaria", "Dirección", "Fecha de nacimiento", "Lugar de nacimiento", "Sexo", "Estado civil", "Número de cédula", "Vacuna Covid-19", "Crédito infonavit", "Nombre del beneficiario", "Teléfono del beneficiario", "Parentesco con el beneficiario", "Estatus", "Motivo de baja", "Motivo/Comentario", "% Recomendable", "Tipo", "Fecha alta del IMSS", "Fecha de inicio", "Fecha de baja"
+                "ID del empleado", "Fecha de ingreso", "Nombre", "Apellido", "Unidad", "Puesto", "Departamento", "Teléfono", "Correo", "Sueldo", "NSS", "Curp", "RFC", "Broxel", "Banco", "Clave interbancaria", "Dirección", "Fecha de nacimiento", "Lugar de nacimiento", "Sexo", "Estado civil", "Número de cédula", "Vacuna Covid-19", "Crédito infonavit", "Nombre del beneficiario", "Teléfono del beneficiario", "Parentesco con el beneficiario", "Estatus", "Motivo de baja", "Motivo/Comentario", "% Recomendable", "Tipo", "Fecha alta del IMSS", "Fecha de inicio", "Fecha de baja"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -513,6 +515,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 String recomendable = rs.getString("recomendable");
                 String motivo = rs.getString("motivo");
                 String tipo = rs.getString("tipo");
+                double sueldo = rs.getDouble("sueldo");
 
                 Date fecha_alta_imss = rs.getDate(32);
                 if (fecha_alta_imss == null) {
@@ -531,7 +534,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 //Datos
                 
                 tblModel.addRow(new Object[]{String.valueOf(id), fecha_ingreso, nombre, apellido,
-                    unidad, puesto, departamento, telefono, correo, nss, curp, rfc, broxel, banco, String.valueOf(clave_i), direccion,
+                    unidad, puesto, departamento, telefono, correo, sueldo, nss, curp, rfc, broxel, banco, String.valueOf(clave_i), direccion,
                     String.valueOf(fecha_n), lugar_nacimiento, sexo, estado_civil, no_cedula, vacuna_covid, credito_infonavit, nombre_beneficiario,
                     telefono_beneficiario, parentesco_beneficiario, estatus, motivo_baja, motivo, recomendable, tipo, String.valueOf(fecha_alta_imss),
                     String.valueOf(fecha_inicio), String.valueOf(fecha_baja)
@@ -620,7 +623,14 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
         
+        int response = fileChooser.showSaveDialog(null);
+        
+        if(response == JFileChooser.APPROVE_OPTION){
+            File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+            System.out.println(file);
+        }
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void itemAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAddUserActionPerformed
