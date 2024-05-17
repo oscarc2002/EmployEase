@@ -434,6 +434,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
 
             loadData("");
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "¡Debes eliminar la cuenta de usuario primero!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

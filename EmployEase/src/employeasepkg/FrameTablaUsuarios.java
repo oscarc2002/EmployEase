@@ -252,6 +252,11 @@ public class FrameTablaUsuarios extends javax.swing.JFrame {
         int opc = JOptionPane.showConfirmDialog(null, "¿Seguro que quieres eliminar a " + user + " con id: " + idEmpleado + "?",
                 "Opciones", JOptionPane.YES_NO_OPTION);
         if (opc == JOptionPane.YES_OPTION) {
+            if(idUser == idEmpleado){
+                JOptionPane.showMessageDialog(rootPane, "No puedes borrarte a ti mismo.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
             PreparedStatement st;
             ResultSet rs;
             

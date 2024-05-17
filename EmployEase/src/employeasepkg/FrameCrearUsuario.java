@@ -215,7 +215,7 @@ public class FrameCrearUsuario extends javax.swing.JFrame {
                 st = connection.getConectarDB().prepareStatement(query);
                 st.setInt(1, idEmpleado);
                 st.setString(2, txtUserName.getText());
-                st.setString(3, txtPwdNormal.getPassword().toString());
+                st.setString(3, String.valueOf(txtPwdNormal.getPassword()));
                 
                 if(chbIsAdmin.isSelected()){
                     st.setInt(4, 1);
@@ -262,7 +262,7 @@ public class FrameCrearUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPwdConfirmKeyPressed
 
     private void verifyPassword(){
-        if(pwd.trim().equals(pwdConfirm)){
+        if(pwd.trim().equals(pwdConfirm) && !(pwd.trim().isBlank())){
             btnCreateUser.setEnabled(true);
             lblResponse.setText("Las contraseñas coinciden");
             lblResponse.setForeground(Color.green);

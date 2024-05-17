@@ -5,6 +5,7 @@ import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -202,7 +203,7 @@ public class FramePerfilUsuario extends javax.swing.JFrame {
                 String query = "UPDATE `empleados` SET `user`= ?,`password`= ? WHERE `id_user` = "+ idUser;
                 st = connection.getConectarDB().prepareStatement(query);
                 st.setString(1, txtUserName.getText());
-                st.setString(2, txtPwd.getText());
+                st.setString(2, String.valueOf(txtPwd.getPassword()));
                 
                 if (st.executeUpdate() != 0) {
                     JOptionPane.showMessageDialog(rootPane, "Se modificó tu usuario con éxito");
@@ -231,9 +232,7 @@ public class FramePerfilUsuario extends javax.swing.JFrame {
     }
     
     private void verifyPassword(){
-        System.out.println("pwd "+pwd);
-        System.out.println("pwdconfirm "+pwdConfirm);
-        if(pwd.trim().equals(pwdConfirm)){
+        if(pwd.trim().equals(pwdConfirm) && !(pwd.trim().isBlank())){
             btnSave.setEnabled(true);
             lblResponse.setText("Ambas contraseñas coinciden");
             lblResponse.setForeground(Color.green);
