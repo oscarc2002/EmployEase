@@ -1,6 +1,5 @@
 package employeasepkg;
 
-import com.toedter.calendar.DateUtil;
 import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,14 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.List;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
-import javax.swing.*;
-import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 
 public class FrameTablaEmpleados extends javax.swing.JFrame {
 
@@ -34,6 +28,8 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         adjustSize();
         this.idUser = idUser;
         adminAdjust();
+        //Permite ordenar dando clic en el nombre de la columna
+        this.tableData.setAutoCreateRowSorter(true); 
     }
 
     private void adjustSize() {
@@ -223,6 +219,8 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
             }
         });
         tableData.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tableData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tableData.setShowGrid(true);
         tableData.getTableHeader().setReorderingAllowed(false);
         tableData.addMouseListener(new java.awt.event.MouseAdapter() {

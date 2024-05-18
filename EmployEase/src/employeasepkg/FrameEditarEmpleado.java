@@ -119,7 +119,7 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Campos con * son obligatorios");
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
 
         itemRegresar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
         itemRegresar.setText("Regresar");
@@ -246,7 +246,8 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
                     + "tipo = ?, " //30
                     + "fecha_alta_imss = ?, "
                     + "fecha_inicio = ?, "
-                    + "fecha_baja = ? "
+                    + "fecha_baja = ?, "
+                    + "salario = ?"
                     + "WHERE id_empleado = ?";
 
             try {
@@ -300,7 +301,8 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
                 st.setDate(31, new java.sql.Date(panelEmpleado.getCalRegisterIMSSDate().getTime()));
                 st.setDate(32, new java.sql.Date(panelEmpleado.getCaldStartDate().getTime()));
                 st.setDate(33, new java.sql.Date(panelEmpleado.getCaldFinishDate().getTime()));
-                st.setInt(34, idEmpleado);
+                st.setDouble(34, panelEmpleado.getTxtSalary());
+                st.setInt(35, idEmpleado);
 
                 if (st.executeUpdate() != 0) {
                     JOptionPane.showMessageDialog(rootPane, "Se actualizó el empleado con éxito");
@@ -361,6 +363,7 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
             panelEmpleado.setCalRegisterIMSSDate(rs.getDate("fecha_alta_imss"));
             panelEmpleado.setCaldFinishDate(rs.getDate("fecha_baja"));
             panelEmpleado.setCaldStartDate(rs.getDate("fecha_inicio"));
+            panelEmpleado.setTxtSalary(rs.getDouble("sueldo"));
             lblID.setText(String.valueOf(id));
         } catch (Exception e) {
             System.out.println(e.toString());
