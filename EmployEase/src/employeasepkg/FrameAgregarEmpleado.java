@@ -196,13 +196,14 @@ public class FrameAgregarEmpleado extends javax.swing.JFrame {
         String estatus = (panelEmpleado.isRbtnActiveSelected()) ? "ACTIVO" : "INACTIVO";
         String recomendable = String.valueOf(panelEmpleado.getSliderRecommended());
         String tipo = (panelEmpleado.isRbtnEntrySelected()) ? "ALTA" : "REINGRESO";
+        Double sueldo = (panelEmpleado.getTxtSalary());
 
         if (verifyFields()) {
             String query = "INSERT INTO `employease`(`fecha_ingreso`, `nombre`, `apellido`, `unidad`, "
                     + "`telefono`, `correo`, `nss`, `curp`, `rfc`, `broxel`, `banco`, `clave_interbancaria`, `direccion`, `fecha_nacimiento`, "
                     + "`lugar_nacimiento`, `sexo`, `estado_civil`, `no_cedula`, `vacuna_covid`, `puesto`, `departamento`, `credito_infonavit`, "
                     + "`nombre_beneficiario`, `telefono_beneficiario`, `parentesco_beneficiario`, `estatus`, `motivo_baja`, `recomendable`, "
-                    + "`motivo`, `tipo`, `fecha_alta_imss`, `fecha_inicio`, `fecha_baja`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "`motivo`, `tipo`, `fecha_alta_imss`, `fecha_inicio`, `fecha_baja`, `sueldo` ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             try {
                 st = connection.getConectarDB().prepareStatement(query);
@@ -243,6 +244,7 @@ public class FrameAgregarEmpleado extends javax.swing.JFrame {
                 st.setDate(31, Date.valueOf(fAltaIMSS));
                 st.setDate(32, Date.valueOf(fInicio));
                 st.setDate(33, Date.valueOf(fFin));
+                st.setDouble(34, sueldo);
 
                 if (st.executeUpdate() != 0) {
                     JOptionPane.showMessageDialog(rootPane, "Se añadió el empleado con éxito");
