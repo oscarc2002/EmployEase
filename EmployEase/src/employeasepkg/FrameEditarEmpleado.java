@@ -247,7 +247,7 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
                     + "fecha_alta_imss = ?, "
                     + "fecha_inicio = ?, "
                     + "fecha_baja = ?, "
-                    + "salario = ?"
+                    + "sueldo = ?"
                     + "WHERE id_empleado = ?";
 
             try {
@@ -264,9 +264,9 @@ public class FrameEditarEmpleado extends javax.swing.JFrame {
                 st.setString(10, panelEmpleado.getTxtBroxel());
                 st.setString(11, panelEmpleado.getTxtBank());
                 if (panelEmpleado.getTxtClaveInter().trim().equals("")) {
-                    st.setInt(12, 0);
+                    st.setString(12, "0");
                 } else {
-                    st.setInt(12, Integer.parseInt(panelEmpleado.getTxtClaveInter()));
+                    st.setString(12, panelEmpleado.getTxtClaveInter());
                 }
                 st.setString(13, panelEmpleado.getTxtDirection());
                 st.setDate(14, new java.sql.Date(panelEmpleado.getCalBirthdayDate().getTime()));

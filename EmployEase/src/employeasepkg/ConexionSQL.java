@@ -11,7 +11,7 @@ public class ConexionSQL {
     public ConexionSQL() {
         String host = "localhost";
         String puerto = "3306";
-        String nameDB = "smi    ";
+        String nameDB = "smi";
 
         String usuario = "root";
         String pass = "";

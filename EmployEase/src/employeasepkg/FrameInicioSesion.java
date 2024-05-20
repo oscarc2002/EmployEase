@@ -4,7 +4,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -28,7 +27,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        lblCampoObligatorio = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -44,11 +42,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
 
         txtUserName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtUserName.setName("txtUserName"); // NOI18N
-        txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUserNameFocusLost(evt);
-            }
-        });
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyPressed(evt);
@@ -86,9 +79,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
                 jButton3btnStartSesionActionPerformed(evt);
             }
         });
-
-        lblCampoObligatorio.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
-        lblCampoObligatorio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenuBar1.setBorderPainted(false);
@@ -137,10 +127,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblCampoObligatorio))
+                            .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(txtUserName)
                             .addComponent(txtPassword)
@@ -156,9 +143,7 @@ public class FrameInicioSesion extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCampoObligatorio))
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -249,14 +234,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuOscuroActionPerformed
 
-    private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
-        if (((JTextField) evt.getSource()).getText().equals("")) {
-            lblCampoObligatorio.setText("* Campo obligatorio");
-        } else {
-            lblCampoObligatorio.setText("");
-        }
-    }//GEN-LAST:event_txtUserNameFocusLost
-
     private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
             startSesion();
@@ -296,7 +273,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuClaro;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuOscuro;
-    private javax.swing.JLabel lblCampoObligatorio;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables

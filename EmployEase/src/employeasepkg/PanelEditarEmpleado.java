@@ -959,7 +959,7 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
     }
     
      public double getTxtSalary() {
-        return Double.parseDouble(txtSalary.getText());
+        return txtSalary.getText().isBlank() ? 0.0 : Double.parseDouble(txtSalary.getText());
     }
 
     public void setTxtSalary(double txtSalary) {

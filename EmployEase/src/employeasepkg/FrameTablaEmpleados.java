@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.time.temporal.ChronoUnit;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -20,7 +21,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     int idEmpleado = 0, idUser = 0, index = 0;
     String nombre_empleado = "", apellido_empleado = "", lugar_n = "", sexo = "", edo_civil = "",
             curp = "", nss = "", rfc = "", direccion = "", correo = "", puesto = "", nombre_beneficiario = "",
-            fecha_i = "", fecha_b, salario = "";
+            edad = "", fecha_i = "", fecha_b, salario = "";
 
     public FrameTablaEmpleados(int idUser) {
         initComponents();
@@ -500,7 +501,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 String banco = rs.getString("banco");
                 String puesto = rs.getString("puesto");
                 String departamento = rs.getString("departamento");
-                int clave_i = rs.getInt(13);
+                String clave_i = rs.getString(13);
                 String direccion = rs.getString("direccion");
                 
                 Date fecha_n = rs.getDate(15);
@@ -536,7 +537,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 //Datos
                 
                 tblModel.addRow(new Object[]{String.valueOf(id), fecha_ingreso, nombre, apellido,
-                    unidad, puesto, departamento, telefono, correo, sueldo, nss, curp, rfc, broxel, banco, String.valueOf(clave_i), direccion,
+                    unidad, puesto, departamento, telefono, correo, sueldo, nss, curp, rfc, broxel, banco, clave_i, direccion,
                     String.valueOf(fecha_n), lugar_nacimiento, sexo, estado_civil, no_cedula, vacuna_covid, credito_infonavit, nombre_beneficiario,
                     telefono_beneficiario, parentesco_beneficiario, estatus, motivo_baja, motivo, recomendable, tipo, String.valueOf(fecha_alta_imss),
                     String.valueOf(fecha_inicio), String.valueOf(fecha_baja)
@@ -626,6 +627,9 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         correo = tblModel.getValueAt(index, 8).toString();
         puesto = tblModel.getValueAt(index, 5).toString();
         nombre_beneficiario = tblModel.getValueAt(index, 24).toString();
+        
+        LocalDate fecha_nac = LocalDate.parse(tblModel.getValueAt(index, 17).toString());
+        edad = String.valueOf( ChronoUnit.YEARS.between(fecha_nac, LocalDate.now()));
         fecha_i = tblModel.getValueAt(index, 33).toString();
         
         LocalDate tmpFechaI = LocalDate.parse(fecha_i);
@@ -790,7 +794,14 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                                 }
                             }
                         }
-
+                        if (text != null && text.contains("{{edad}}")) {
+                            for (XWPFRun run : paragraph.getRuns()) {
+                                String runText = run.getText(run.getTextPosition());
+                                if (runText != null && runText.contains("{{edad}}")) {
+                                    run.setText(runText.replace("{{edad}}", edad), 0);
+                                }
+                            }
+                        }
                     }
                     // Guardar la plantilla modificada
                     FileOutputStream fileOutputStream = new FileOutputStream(location);

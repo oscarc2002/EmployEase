@@ -219,9 +219,9 @@ public class FrameAgregarEmpleado extends javax.swing.JFrame {
                 st.setString(10, broxel);
                 st.setString(11, banco);
                 if (clave.trim().equals("")) {
-                    st.setInt(12, 0);
+                    st.setString(12, "0");
                 } else {
-                    st.setInt(12, Integer.parseInt(clave));
+                    st.setString(12, clave);
                 }
                 st.setString(13, direccion);
                 st.setDate(14, Date.valueOf(fNacimiento));
