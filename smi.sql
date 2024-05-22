@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-05-2024 a las 03:26:39
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: May 22, 2024 at 03:46 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `smi`
+-- Database: `smi`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empleados`
+-- Table structure for table `empleados`
 --
 
 CREATE TABLE `empleados` (
@@ -35,17 +35,19 @@ CREATE TABLE `empleados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `empleados`
+-- Dumping data for table `empleados`
 --
 
 INSERT INTO `empleados` (`id_user`, `user`, `password`, `esAdmin`) VALUES
 (141, 'legoguy', '456789', 1),
-(142, 'marin', '[C@5755a2c5', 0);
+(142, 'marin', '[C@5755a2c5', 0),
+(200, 'dennise', '-206823755', 1),
+(201, 'bill', '-206823755', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `employease`
+-- Table structure for table `employease`
 --
 
 CREATE TABLE `employease` (
@@ -87,7 +89,7 @@ CREATE TABLE `employease` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `employease`
+-- Dumping data for table `employease`
 --
 
 INSERT INTO `employease` (`fecha_ingreso`, `id_empleado`, `nombre`, `apellido`, `unidad`, `telefono`, `correo`, `nss`, `curp`, `rfc`, `broxel`, `banco`, `clave_interbancaria`, `direccion`, `fecha_nacimiento`, `lugar_nacimiento`, `sexo`, `estado_civil`, `no_cedula`, `vacuna_covid`, `puesto`, `departamento`, `credito_infonavit`, `nombre_beneficiario`, `telefono_beneficiario`, `parentesco_beneficiario`, `estatus`, `motivo_baja`, `recomendable`, `motivo`, `tipo`, `fecha_alta_imss`, `fecha_inicio`, `fecha_baja`, `sueldo`) VALUES
@@ -234,42 +236,44 @@ INSERT INTO `employease` (`fecha_ingreso`, `id_empleado`, `nombre`, `apellido`, 
 ('0001-01-01', 140, 'FRANCISCO EDUARDO', 'AÑORVE ARCOS', 'SERVICIOS MEDICOS INDUSTRIALES', '664 7941 636', 'franciscorve1@gmail.com', '05-21-00-90-75-8', 'AOAF000321HTLXRRA0', ' AOAF000321SV7', '', 'HSBC', 0, 'AV DE LOS INGENIEROS 126 CP.00 ASTRONOMOS\r\n OTAY UNIVERSIDAD. C.P. 22427 TIJUANA, BC', '2000-03-21', 'TLAXCALA-TLAXCALA', 'MASCULINO', 'SOLTERO', '', 'VACUNADO', 'MEDICO', 'MEDICO', '', 'Lilia Andrea Añorve Arcos ', '6633176029', 'Hermana', 'ACTIVO', '', '', '', '', '0001-01-01', '0001-01-01', '0001-01-01', 0),
 ('0001-01-01', 141, 'oscar', 'cebrian', '', '', '', '', '', '', '', '', 0, '', '0001-01-01', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0001-01-01', '0001-01-01', '0001-01-01', 0),
 ('2024-05-13', 142, 'Alejandro', 'marin', 'VALLE DE LAS VACAS', '', '', '', '', '', '', '', 0, '', '0001-01-01', '', 'Masculino', 'Soltero', '', 'REGISTRADO', 'DOCTOR', 'MEDICINA', '', '', '', '', 'ACTIVO', '', '0', '', 'REINGRESO', '0001-01-01', '0001-01-01', '0001-01-01', 0),
-('2024-04-28', 143, 'brayan', 'lopez mercado', 't', '2124', 't', '45-45', 'begas123', 'brayan3324', '2387432', 'BANAMEX', 21345, 'calle manzana', '2024-04-28', 'tijuana, baja california', 'Hombre', 'soltero', '31-78-99', 'REGISTRADO', 'DIRECTOR GENERAL', 'DIRECTOR', '45562', 'martha stewart', '664 254 120', 'madre', 'ACTIVO', '', '40', '', 'ALTA', '0001-01-01', '0001-01-01', '0001-01-01', 0),
+('2024-05-20', 143, 'brayan', 'lopez mercado', 't', '2124', 'brayan.lopez46@uabc.edu.mx', '45-45', 'begas123', 'brayan3324', '2387432', 'BANAMEX', 21345, 'calle manzana', '2024-04-28', 'tijuana, baja california', 'Masculino', 'Soltero', '31-78-99', 'VACUNADO', 'DIRECTOR GENERAL', 'DIRECTOR', '45562', 'martha stewart', '664 254 120', 'madre', 'ACTIVO', '', '40', '\n', 'ALTA', '0001-01-01', '0001-01-01', '0001-01-01', 0),
 ('2024-05-12', 144, 'efrain', 'lemus', 'SERVICIOS MEDICOS INDUSTRIALES', '', '', '', '', '', '', '', 0, '', '2024-04-28', '', 'Masculino', 'Soltero', '', 'REGISTRADO', 'MEDICO', 'MEDICO', '', '', '', '', 'ACTIVO', '', '50', '', 'ALTA', '0001-01-01', '0001-01-01', '0001-01-01', 0),
-('2024-05-12', 148, 'mario', 'al', 'lkjka', '', '', '', '', '', '', '', 0, '', '2024-05-12', '', 'Masculino', 'Soltero', '', 'REGISTRADO', 'medicina', 'dda', '', '', '', '', 'ACTIVO', '', '50', '', 'ALTA', '0001-01-01', '2024-05-12', '2024-05-12', 0);
+('2024-05-12', 148, 'mario', 'al', 'lkjka', '', '', '', '', '', '', '', 0, '', '2024-05-12', '', 'Masculino', 'Soltero', '', 'REGISTRADO', 'medicina', 'dda', '', '', '', '', 'ACTIVO', '', '50', '', 'ALTA', '0001-01-01', '2024-05-12', '2024-05-12', 0),
+('0000-00-00', 200, 'dennise', 'vega', '.', '655', 'e', '23', 'sad', 'ewq2', '', '', 0, '', '2024-05-07', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+('2024-05-21', 201, 'bill', 'vega', 'ewr', '543', 'r', '', 'wqeq2e', 'asdqw3', '', '', 0, 'sa', '2002-05-15', '', 'Masculino', 'Soltero', '', 'REGISTRADO', 'wre', 'ff', '', '', '', '', 'ACTIVO', '', '50', '\n', 'ALTA', '0001-01-01', '2002-05-15', '2002-05-15', 0);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `empleados`
+-- Indexes for table `empleados`
 --
 ALTER TABLE `empleados`
   ADD KEY `fk_id_employease` (`id_user`);
 
 --
--- Indices de la tabla `employease`
+-- Indexes for table `employease`
 --
 ALTER TABLE `employease`
   ADD PRIMARY KEY (`id_empleado`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `employease`
+-- AUTO_INCREMENT for table `employease`
 --
 ALTER TABLE `employease`
-  MODIFY `id_empleado` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `id_empleado` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `empleados`
+-- Constraints for table `empleados`
 --
 ALTER TABLE `empleados`
   ADD CONSTRAINT `fk_id_employease` FOREIGN KEY (`id_user`) REFERENCES `employease` (`id_empleado`);
