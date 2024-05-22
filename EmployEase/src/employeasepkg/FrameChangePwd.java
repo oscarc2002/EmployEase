@@ -147,13 +147,15 @@ public class FrameChangePwd extends javax.swing.JFrame {
                 st = connection.getConectarDB().prepareStatement(query);
 
                 st.setInt(1, idUser);
-                st.setString(2, pwdOld);
+                Integer pwdHs = pwdOld.hashCode();
+                st.setString(2, pwdHs.toString()); 
                 rs = st.executeQuery();
 
                 if (rs.next()) {
                     query = "UPDATE `empleados` SET `password`= ? WHERE `id_user` = " + idUser;
                     st = connection.getConectarDB().prepareStatement(query);
-                    st.setString(1, pwd);
+                    pwdHs = pwd.hashCode();
+                    st.setString(1, pwdHs.toString());
 
                     if (st.executeUpdate() != 0) {
                         JOptionPane.showMessageDialog(rootPane, "Se modificó tu contraseña con éxito");

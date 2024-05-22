@@ -208,7 +208,9 @@ public class FrameCrearUsuario extends javax.swing.JFrame {
                 st = connection.getConectarDB().prepareStatement(query);
                 st.setInt(1, idEmpleado);
                 st.setString(2, txtUserName.getText());
-                st.setString(3, String.valueOf(txtPwdNormal.getPassword()));
+                String password = String.valueOf(txtPwdNormal.getPassword());
+                Integer passHs = password.hashCode();
+                st.setString(3,passHs.toString());
                 
                 if(chbIsAdmin.isSelected()){
                     st.setInt(4, 1);

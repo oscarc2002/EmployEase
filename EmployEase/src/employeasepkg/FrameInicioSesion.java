@@ -182,10 +182,11 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         String query = "SELECT * FROM `empleados` WHERE `user` = ? AND `password` = ?";
         try {
             st = connection.getConectarDB().prepareStatement(query);
-
+            Integer passwordHs = password.hashCode();
             st.setString(1, username);
-            st.setString(2, password);
+            st.setString(2, passwordHs.toString());
             rs = st.executeQuery();
+            System.out.println("Sin hash:"+password+"\nCon hash:"+passwordHs);
 
             if (rs.next()) {
                 FrameTablaEmpleados info = new FrameTablaEmpleados(rs.getInt("id_user"));
