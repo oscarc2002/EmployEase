@@ -182,9 +182,9 @@ public class FrameInicioSesion extends javax.swing.JFrame {
         String query = "SELECT * FROM `empleados` WHERE `user` = ? AND `password` = ?";
         try {
             st = connection.getConectarDB().prepareStatement(query);
-
+            Integer passwordHs = password.hashCode(); //<-- NewLine
             st.setString(1, username);
-            st.setString(2, password);
+            st.setString(2, passwordHs.toString()); //<-- NewLine
             rs = st.executeQuery();
 
             if (rs.next()) {
