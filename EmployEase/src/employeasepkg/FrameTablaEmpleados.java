@@ -91,7 +91,6 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         chkMostrarActivos = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
-        itemDocumentation = new javax.swing.JMenuItem();
         itemQA = new javax.swing.JMenuItem();
         itemProfile = new javax.swing.JMenuItem();
         itemCloseSession = new javax.swing.JMenuItem();
@@ -310,14 +309,6 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
 
         menuFile.setText("Archivo");
 
-        itemDocumentation.setText("Documentación");
-        itemDocumentation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemDocumentationActionPerformed(evt);
-            }
-        });
-        menuFile.add(itemDocumentation);
-
         itemQA.setText("Preguntas frecuentas");
         itemQA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -460,12 +451,6 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_itemCloseSessionActionPerformed
-
-    private void itemDocumentationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDocumentationActionPerformed
-        FrameDocumentacion df = new FrameDocumentacion(idUser);
-        df.show();
-        this.dispose();
-    }//GEN-LAST:event_itemDocumentationActionPerformed
 
     private void itemQAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemQAActionPerformed
         FramePreguntas qa = new FramePreguntas(idUser);
@@ -852,7 +837,6 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkMostrarActivos;
     private javax.swing.JMenuItem itemAddUser;
     private javax.swing.JMenuItem itemCloseSession;
-    private javax.swing.JMenuItem itemDocumentation;
     private javax.swing.JMenuItem itemProfile;
     private javax.swing.JMenuItem itemQA;
     private javax.swing.JMenuItem itemReadUser;

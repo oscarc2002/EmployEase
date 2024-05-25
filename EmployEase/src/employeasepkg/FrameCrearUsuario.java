@@ -3,6 +3,7 @@ package employeasepkg;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -203,31 +204,44 @@ public class FrameCrearUsuario extends javax.swing.JFrame {
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
         if(verifyFields()){
             PreparedStatement st;
+            ResultSet rs;
             try{
-                String query = "INSERT INTO `empleados`(`id_user`, `user`, `password`, `esAdmin`) VALUES (?,?,?,?)";
+                String query = "SELECT * FROM `empleados` WHERE `user` = ?";
                 st = connection.getConectarDB().prepareStatement(query);
-                st.setInt(1, idEmpleado);
-                st.setString(2, txtUserName.getText());
-                String password = String.valueOf(txtPwdNormal.getPassword());
-                Integer passHs = password.hashCode();
-                st.setString(3,passHs.toString());
-                
-                if(chbIsAdmin.isSelected()){
-                    st.setInt(4, 1);
+
+                st.setString(1, txtUserName.getText());
+                rs = st.executeQuery();
+
+                if (rs.next()){
+                    JOptionPane.showMessageDialog(rootPane, "No se pueden repetir usuarios");
                 }
                 else{
-                    st.setInt(4, 0);
+                    query = "INSERT INTO `empleados`(`id_user`, `user`, `password`, `esAdmin`) VALUES (?,?,?,?)";
+                    st = connection.getConectarDB().prepareStatement(query);
+                    st.setInt(1, idEmpleado);
+                    st.setString(2, txtUserName.getText());
+                    String password = String.valueOf(txtPwdNormal.getPassword());
+                    Integer passHs = password.hashCode();
+                    st.setString(3,passHs.toString());
+
+                    if(chbIsAdmin.isSelected()){
+                        st.setInt(4, 1);
+                    }
+                    else{
+                        st.setInt(4, 0);
+                    }
+
+                    if (st.executeUpdate() != 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Se añadió el usuario con éxito");
+                        //Cerrar pestaña
+                        FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
+                        info.show();
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Error al añadir el usuario");
+                    }
                 }
                 
-                if (st.executeUpdate() != 0) {
-                    JOptionPane.showMessageDialog(rootPane, "Se añadió el usuario con éxito");
-                    //Cerrar pestaña
-                    FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
-                    info.show();
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Error al añadir el usuario");
-                }
             }catch(HeadlessException | NumberFormatException | SQLException e){
                 System.out.println(e.toString());
             }

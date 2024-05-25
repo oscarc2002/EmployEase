@@ -186,7 +186,6 @@ public class FrameInicioSesion extends javax.swing.JFrame {
             st.setString(1, username);
             st.setString(2, passwordHs.toString());
             rs = st.executeQuery();
-            System.out.println("Sin hash:"+password+"\nCon hash:"+passwordHs);
 
             if (rs.next()) {
                 FrameTablaEmpleados info = new FrameTablaEmpleados(rs.getInt("id_user"));
@@ -201,9 +200,27 @@ public class FrameInicioSesion extends javax.swing.JFrame {
     }
 
     private void jButton3btnStartSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3btnStartSesionActionPerformed
-        FrameClaveOlvidada fpwd = new FrameClaveOlvidada();
-        fpwd.show();
-        this.dispose();
+        PreparedStatement st;
+        ResultSet rs;
+        String user = JOptionPane.showInputDialog("Ingresa tu usuario");
+                
+        String query = "SELECT * FROM `empleados` WHERE `user` = ?";
+        try {
+            st = connection.getConectarDB().prepareStatement(query);
+
+            st.setString(1, user);
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                FrameChangePwd frame = new FrameChangePwd(user);
+                frame.show();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "El nombre de usuario no existe", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }//GEN-LAST:event_jButton3btnStartSesionActionPerformed
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed

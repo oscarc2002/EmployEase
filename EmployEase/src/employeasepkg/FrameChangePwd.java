@@ -8,7 +8,8 @@ import javax.swing.JOptionPane;
 public class FrameChangePwd extends javax.swing.JFrame {
     ConexionSQL connection = new ConexionSQL();
     int idUser;
-    String pwd, pwdConfirm, pwdOld;
+    String user, pwd, pwdConfirm, pwdOld;
+    boolean forgotFlag = false;
     
     public FrameChangePwd() {
         initComponents();
@@ -17,6 +18,13 @@ public class FrameChangePwd extends javax.swing.JFrame {
     public FrameChangePwd(int idUser) {
         initComponents();
         this.idUser = idUser;
+        lblResponse.setVisible(false);
+    }
+    
+    public FrameChangePwd(String user) {
+        initComponents();
+        this.user = user;
+        forgotFlag = true;
         lblResponse.setVisible(false);
     }
 
@@ -131,46 +139,86 @@ public class FrameChangePwd extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReturnActionPerformed
-        FrameTablaEmpleados frame = new FrameTablaEmpleados(idUser);
-        frame.show();
-        this.dispose();
+        if(!forgotFlag){
+            FrameTablaEmpleados frame = new FrameTablaEmpleados(idUser);
+            frame.show();
+            this.dispose();
+        }
+        else{
+            FrameInicioSesion frame = new FrameInicioSesion();
+            frame.show();
+            this.dispose();
+        }
     }//GEN-LAST:event_itemReturnActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(verifyFields()){
-            pwdOld = JOptionPane.showInputDialog("Ingresa tu contraseña anterior");
             PreparedStatement st;
             ResultSet rs;
-
-            String query = "SELECT * FROM `empleados` WHERE `id_user` = ? AND `password` = ?";
-            try {
-                st = connection.getConectarDB().prepareStatement(query);
-
-                st.setInt(1, idUser);
-                Integer pwdHs = pwdOld.hashCode();
-                st.setString(2, pwdHs.toString()); 
-                rs = st.executeQuery();
-
-                if (rs.next()) {
-                    query = "UPDATE `empleados` SET `password`= ? WHERE `id_user` = " + idUser;
+            if(!forgotFlag){
+                pwdOld = JOptionPane.showInputDialog("Ingresa tu contraseña anterior");
+                
+                String query = "SELECT * FROM `empleados` WHERE `id_user` = ? AND `password` = ?";
+                try {
                     st = connection.getConectarDB().prepareStatement(query);
-                    pwdHs = pwd.hashCode();
-                    st.setString(1, pwdHs.toString());
 
-                    if (st.executeUpdate() != 0) {
-                        JOptionPane.showMessageDialog(rootPane, "Se modificó tu contraseña con éxito");
-                        //Cerrar pestaña
-                        FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
-                        info.show();
-                        this.dispose();
+                    st.setInt(1, idUser);
+                    Integer pwdHs = pwdOld.hashCode();
+                    st.setString(2, pwdHs.toString()); 
+                    rs = st.executeQuery();
+
+                    if (rs.next()) {
+                        query = "UPDATE `empleados` SET `password`= ? WHERE `id_user` = " + idUser;
+                        st = connection.getConectarDB().prepareStatement(query);
+                        pwdHs = pwd.hashCode();
+                        st.setString(1, pwdHs.toString());
+
+                        if (st.executeUpdate() != 0) {
+                            JOptionPane.showMessageDialog(rootPane, "Se modificó tu contraseña con éxito");
+                            //Cerrar pestaña
+                            FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
+                            info.show();
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "Error al modificar tu usuario");
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(rootPane, "Error al modificar tu usuario");
+                        JOptionPane.showMessageDialog(rootPane, "La contraseña es incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "La contraseña es incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    System.out.println(e.toString());
                 }
-            } catch (Exception e) {
-                System.out.println(e.toString());
+            }
+            else{
+                String query = "SELECT * FROM `empleados` WHERE `user` = ?";
+                try {
+                    st = connection.getConectarDB().prepareStatement(query);
+
+                    st.setString(1, user);
+                    rs = st.executeQuery();
+
+                    if (rs.next()) {
+                        query = "UPDATE `empleados` SET `password`= ? WHERE `user` = ?";
+                        st = connection.getConectarDB().prepareStatement(query);
+                        Integer pwdHs = pwd.hashCode();
+                        st.setString(1, pwdHs.toString());
+                        st.setString(2, user);
+
+                        if (st.executeUpdate() != 0) {
+                            JOptionPane.showMessageDialog(rootPane, "Se modificó tu contraseña con éxito");
+                            //Cerrar pestaña
+                            FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
+                            info.show();
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "Error al modificar tu usuario");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "La contraseña es incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
