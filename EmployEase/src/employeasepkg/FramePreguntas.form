@@ -136,11 +136,11 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -178,8 +178,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
+                  <Component id="jLabel3" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -190,12 +189,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pregunta 1"/>
+            <Property name="text" type="java.lang.String" value="&#xbf;C&#xf3;mo agregar un usuario?"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Respuesta 1"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Al seleccionar el bot&#xf3;n &quot;Agregar&quot;, se abrir&#xe1; una ventana en donde se &lt;br&gt;&#xa;deber&#xe1;n llenar los datos del empleado, recuerde que los campos &lt;br&gt;&#xa;con el s&#xed;mbolo &quot;*&quot; son obligatorios.&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -224,8 +223,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
+                  <Component id="jLabel5" pref="86" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -236,12 +234,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pregunta 2"/>
+            <Property name="text" type="java.lang.String" value="&#xbf;C&#xf3;mo eliminar un usuario?"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Respuesta 2"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Primero debe seleccionar al empleado a eliminar de la lista principal, al presionar el bot&#xf3;n &quot;Eliminar&quot; &#xa;se deber&#xe1; confirmar la acci&#xf3;n. Tenga en cuenta que si el  empleado a eliminar esta registrado con &#xa;una cuenta de usuario, primero debe de eliminar su cuenta.&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -270,8 +268,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
+                  <Component id="jLabel9" pref="70" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -282,12 +279,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pregunta 3"/>
+            <Property name="text" type="java.lang.String" value="&#xbf;C&#xf3;mo generar un contrato?"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Respuesta 3"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Primero se debe seleccionar al empleado al que se le desea generar un contrato de la lista principal, una vez seleccionado se habilitar&#xe1; el bot&#xf3;n &quot;Generar contrato&quot;, donde deber&#xe1; elegir donde se almacenar&#xe1; el archivo, su t&#xed;tulo y finalmente la plantilla deseada.&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -316,8 +313,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
+                  <Component id="jLabel11" pref="68" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -328,12 +325,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pregunta 4"/>
+            <Property name="text" type="java.lang.String" value="&#xbf;Qu&#xe9; puedo hacer si pierdo mi contrase&#xf1;a?"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Respuesta 4"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;En el inicio de sesi&#xf3;n, deber&#xe1; seleccionar el bot&#xf3;n de &quot;Recuperar contrase&#xf1;a de usuario&quot;, donde se le pedir&#xe1; ingresar su nombre de usuario registrado, despu&#xe9;s de esto podr&#xe1; crear una nueva contrase&#xf1;a.&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
       </SubComponents>
