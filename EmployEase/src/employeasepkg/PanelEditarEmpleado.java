@@ -289,6 +289,8 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
 
         jLabel41.setText("Motivo:");
 
+        txtReasons.setEnabled(false);
+
         jLabel34.setText("Comentario:");
 
         txtComentaries.setColumns(20);
@@ -297,6 +299,7 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
         txtComentaries.setText("\n");
         txtComentaries.setWrapStyleWord(true);
         txtComentaries.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        txtComentaries.setEnabled(false);
 
         caldFinish.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 

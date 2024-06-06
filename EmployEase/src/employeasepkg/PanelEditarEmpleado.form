@@ -566,6 +566,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtReasons">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel34">
               <Properties>
@@ -584,6 +587,7 @@
                     <TitledBorder/>
                   </Border>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="caldFinish">

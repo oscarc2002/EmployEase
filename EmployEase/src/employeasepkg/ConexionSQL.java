@@ -31,6 +31,7 @@ public class ConexionSQL {
             //System.out.println("Conexion exitosa");
         } catch (Exception e) {
             System.out.println("Ocurrio un error");
+            e.printStackTrace();
         }
     }
 
