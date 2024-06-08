@@ -18,6 +18,7 @@ public class FrameCrearUsuario extends javax.swing.JFrame {
     
     public FrameCrearUsuario(int idUser, int idEmpleado) {
         initComponents();
+        getContentPane().setBackground(new Color(0x6cb4d4));
         this.idUser = idUser;
         this.idEmpleado = idEmpleado;
         adjust();
@@ -50,11 +51,14 @@ public class FrameCrearUsuario extends javax.swing.JFrame {
         itemReturn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("ID del Usuario:");
 
         lblID.setText("0");
+
+        jPanel1.setBackground(new java.awt.Color(25, 108, 170));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Nombre de usuario:");
@@ -145,6 +149,7 @@ public class FrameCrearUsuario extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         itemReturn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        itemReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/return.png"))); // NOI18N
         itemReturn.setText("Regresar");
         itemReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -1,5 +1,6 @@
 package employeasepkg;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class FramePreguntas extends javax.swing.JFrame {
@@ -12,6 +13,7 @@ public class FramePreguntas extends javax.swing.JFrame {
     public FramePreguntas(int idUser) {
         initComponents();
         this.idUser = idUser;
+        getContentPane().setBackground(new Color(0x6cb4d4));
     }
 
     @SuppressWarnings("unchecked")
@@ -37,8 +39,6 @@ public class FramePreguntas extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itemReturn = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -67,15 +67,18 @@ public class FramePreguntas extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jLabel1.setText("Preguntas Frecuentes");
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(25, 108, 170));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("¿Cómo agregar un usuario?");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("<html>\nAl seleccionar el botón \"Agregar\", se abrirá una ventana en donde se <br>\ndeberán llenar los datos del empleado, recuerde que los campos <br>\ncon el símbolo \"*\" son obligatorios.\n</html>");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -96,11 +99,13 @@ public class FramePreguntas extends javax.swing.JFrame {
                 .addComponent(jLabel3))
         );
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(25, 108, 170));
 
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("¿Cómo eliminar un usuario?");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("<html>\nPrimero debe seleccionar al empleado a eliminar de la lista principal, al presionar el botón \"Eliminar\" \nse deberá confirmar la acción. Tenga en cuenta que si el  empleado a eliminar esta registrado con \nuna cuenta de usuario, primero debe de eliminar su cuenta.\n</html>");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -121,11 +126,13 @@ public class FramePreguntas extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel4.setBackground(new java.awt.Color(25, 108, 170));
 
         jLabel8.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("¿Cómo generar un contrato?");
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("<html>\nPrimero se debe seleccionar al empleado al que se le desea generar un contrato de la lista principal, una vez seleccionado se habilitará el botón \"Generar contrato\", donde deberá elegir donde se almacenará el archivo, su título y finalmente la plantilla deseada.\n</html>");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -146,11 +153,13 @@ public class FramePreguntas extends javax.swing.JFrame {
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel5.setBackground(new java.awt.Color(25, 108, 170));
 
         jLabel10.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("¿Qué puedo hacer si pierdo mi contraseña?");
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("<html>\nEn el inicio de sesión, deberá seleccionar el botón de \"Recuperar contraseña de usuario\", donde se le pedirá ingresar su nombre de usuario registrado, después de esto podrá crear una nueva contraseña.\n</html>");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -175,6 +184,7 @@ public class FramePreguntas extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         itemReturn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        itemReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/return.png"))); // NOI18N
         itemReturn.setText("Regresar");
         itemReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,18 +193,7 @@ public class FramePreguntas extends javax.swing.JFrame {
         });
         jMenu1.add(itemReturn);
 
-        jMenuItem1.setText("Cerrar sesión");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Editar");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -235,15 +234,6 @@ public class FramePreguntas extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        int opc = JOptionPane.showConfirmDialog(null, "Seguro que quieres cerrar sesión?", "Opciones", JOptionPane.YES_NO_OPTION);
-        if (opc == 0) {
-            FrameInicioSesion sSF = new FrameInicioSesion();
-            sSF.show();
-            this.dispose();
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void itemReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReturnActionPerformed
         FrameTablaEmpleados info = new FrameTablaEmpleados(idUser);
@@ -291,9 +281,7 @@ public class FramePreguntas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -1,9 +1,9 @@
 package employeasepkg;
 
+import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
-import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class FrameAgregarUsuario extends javax.swing.JFrame {
@@ -18,6 +18,8 @@ public class FrameAgregarUsuario extends javax.swing.JFrame {
     
     public FrameAgregarUsuario(int idUser) {
         initComponents();
+        getContentPane().setBackground(new Color(0x6cb4d4));
+        
         loadData();
         adjustSize();
         this.idUser = idUser;
@@ -79,6 +81,7 @@ public class FrameAgregarUsuario extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("id de empleado:");
@@ -125,6 +128,7 @@ public class FrameAgregarUsuario extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         itemReturn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        itemReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/return.png"))); // NOI18N
         itemReturn.setText("Regresar");
         itemReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,13 +172,10 @@ public class FrameAgregarUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addComponent(lblID)
                         .addComponent(jLabel2)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCreateUser))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnCreateUser)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -192,12 +193,31 @@ public class FrameAgregarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_tableEmployeesMouseClicked
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
-        FrameCrearUsuario frame = new FrameCrearUsuario(idUser, idEmpleado);
-        frame.show();
-        this.dispose();
+        PreparedStatement st;
+        ResultSet rs;
+        String query = "SELECT * FROM `empleados` WHERE `id_user` = ?";
+        try {
+            st = connection.getConectarDB().prepareStatement(query);
+
+            st.setInt(1, idEmpleado);
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(rootPane, "El empleado ya tiene usuario", 
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                FrameCrearUsuario frame = new FrameCrearUsuario(idUser, idEmpleado);
+                frame.show();
+                this.dispose();
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
     private void itemReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReturnActionPerformed
+        
+        
         FrameTablaEmpleados frame = new FrameTablaEmpleados(idUser);
         frame.show();
         this.dispose();

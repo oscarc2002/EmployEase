@@ -1,5 +1,6 @@
 package employeasepkg;
 
+import java.awt.Color;
 import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,10 +22,12 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     int idEmpleado = 0, idUser = 0, index = 0;
     String nombre_empleado = "", apellido_empleado = "", lugar_n = "", sexo = "", edo_civil = "",
             curp = "", nss = "", rfc = "", direccion = "", correo = "", puesto = "", nombre_beneficiario = "",
-            edad = "", fecha_i = "", fecha_b, salario = "";
+            edad = "", fecha_i = "", fecha_b, salario = "", estatus  = "";
 
     public FrameTablaEmpleados(int idUser) {
         initComponents();
+        getContentPane().setBackground(new Color(0x6cb4d4));
+        colorLabels();
         loadData("where `estatus` = 'ACTIVO'");
         adjustSize();
         this.idUser = idUser;
@@ -62,6 +65,15 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }
+    
+    void colorLabels(){
+        lblID.setForeground(Color.white);
+        lblDepartment.setForeground(Color.white);
+        lblName.setForeground(Color.white);
+        lblPosition.setForeground(Color.white);
+        lblUnit.setForeground(Color.white);
+        chkMostrarActivos.setForeground(Color.white);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -70,14 +82,14 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtID = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblUnit = new javax.swing.JLabel();
         txtUnidad = new javax.swing.JTextField();
         txtPuesto = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblPosition = new javax.swing.JLabel();
+        lblDepartment = new javax.swing.JLabel();
         txtDepartamento = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
@@ -89,6 +101,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnGenerar = new javax.swing.JButton();
         chkMostrarActivos = new javax.swing.JCheckBox();
+        imageLogo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         itemQA = new javax.swing.JMenuItem();
@@ -99,9 +112,12 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         itemReadUser = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setText("Tabla de empleados");
+
+        jPanel1.setBackground(new java.awt.Color(25, 108, 170));
 
         txtID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -109,8 +125,8 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel2.setText("ID:");
+        lblID.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblID.setText("ID:");
 
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -118,11 +134,11 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel3.setText("Nombre:");
+        lblName.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblName.setText("Nombre:");
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel4.setText("Unidad:");
+        lblUnit.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblUnit.setText("Unidad:");
 
         txtUnidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -136,11 +152,11 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel5.setText("Puesto:");
+        lblPosition.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblPosition.setText("Puesto:");
 
-        jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel6.setText("Departamento:");
+        lblDepartment.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblDepartment.setText("Departamento:");
 
         txtDepartamento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -156,22 +172,22 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
+                    .addComponent(lblDepartment)
                     .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -181,23 +197,23 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(lblDepartment)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(lblName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
+                            .addComponent(lblID)
+                            .addComponent(lblUnit))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(lblPosition)
                         .addGap(34, 34, 34)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -232,7 +248,10 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
 
         jLabel7.setText("Empleado seleccionado:");
 
+        lblNombre.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         lblNombre.setText("Ninguno");
+
+        jPanel2.setBackground(new java.awt.Color(25, 108, 170));
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -307,8 +326,12 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        imageLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo1.jpeg"))); // NOI18N
+        imageLogo.setBorder(null);
+
         menuFile.setText("Archivo");
 
+        itemQA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/qa.png"))); // NOI18N
         itemQA.setText("Preguntas frecuentas");
         itemQA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,6 +340,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         });
         menuFile.add(itemQA);
 
+        itemProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/profile.png"))); // NOI18N
         itemProfile.setText("Ver mi perfil");
         itemProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,6 +349,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         });
         menuFile.add(itemProfile);
 
+        itemCloseSession.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/log_out.png"))); // NOI18N
         itemCloseSession.setText("Cerrar sesión");
         itemCloseSession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,6 +362,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
 
         menuEdit.setText("Editar");
 
+        itemAddUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add_user.png"))); // NOI18N
         itemAddUser.setText("Añadir usuario");
         itemAddUser.setName("itemAddUser"); // NOI18N
         itemAddUser.addActionListener(new java.awt.event.ActionListener() {
@@ -346,6 +372,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         });
         menuEdit.add(itemAddUser);
 
+        itemReadUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_list.png"))); // NOI18N
         itemReadUser.setText("Lista de usuarios");
         itemReadUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,10 +390,6 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(302, 302, 302)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -377,16 +400,26 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(324, 324, 324)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imageLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(67, 67, 67)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(imageLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -623,6 +656,13 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
         
         salario = tblModel.getValueAt(index, 9).toString();
         lblNombre.setText(nombre_empleado);
+        
+        estatus = tblModel.getValueAt(index, 27).toString();
+        
+        if(estatus.trim().equals("INACTIVO"))
+            btnGenerar.setEnabled(false);
+        else
+            btnGenerar.setEnabled(true);
     }//GEN-LAST:event_tableDataMouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -793,7 +833,7 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
                     document.write(fileOutputStream);
                     fileOutputStream.close();
                     document.close();
-                    JOptionPane.showMessageDialog(rootPane, "Se ha credo el contrato con éxito");
+                    JOptionPane.showMessageDialog(rootPane, "Se ha creado el contrato con éxito");
                     // Agrega más lógica para otros marcadores o placeholders aquí
                 }
             } 
@@ -835,23 +875,24 @@ public class FrameTablaEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JCheckBox chkMostrarActivos;
+    private javax.swing.JLabel imageLogo;
     private javax.swing.JMenuItem itemAddUser;
     private javax.swing.JMenuItem itemCloseSession;
     private javax.swing.JMenuItem itemProfile;
     private javax.swing.JMenuItem itemQA;
     private javax.swing.JMenuItem itemReadUser;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDepartment;
+    private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPosition;
+    private javax.swing.JLabel lblUnit;
     private javax.swing.JMenu menuEdit;
     private javax.swing.JMenu menuFile;
     private javax.swing.JTable tableData;

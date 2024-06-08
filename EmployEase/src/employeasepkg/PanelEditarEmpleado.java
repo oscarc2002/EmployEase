@@ -100,12 +100,6 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
 
         jLabel5.setText("Nombre(s) (*):");
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-
         jLabel15.setText("Estado civil:");
 
         jLabel21.setText("Correo electrónico:");
@@ -308,6 +302,12 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
         caldStart.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel35.setText("Fecha de inicio:");
+
+        txtSalary.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSalaryKeyTyped(evt);
+            }
+        });
 
         jLabel1.setText("Sueldo");
 
@@ -626,6 +626,8 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
         if (rbtnActive.isSelected()) {
             txtReasons.setEnabled(false);
             txtComentaries.setEnabled(false);
+            txtReasons.setText("");
+            txtComentaries.setText("");
         }
     }//GEN-LAST:event_rbtnActiveActionPerformed
 
@@ -657,19 +659,21 @@ public class PanelEditarEmpleado extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtPhoneKeyTyped
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
-
     private void txtBeneficiaryPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBeneficiaryPhoneKeyTyped
         //Solo numeros y espacio
         if (!Character.isDigit(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
-
             evt.consume();
-        } else {
-
         }
     }//GEN-LAST:event_txtBeneficiaryPhoneKeyTyped
+
+    private void txtSalaryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalaryKeyTyped
+        //Solo numeros y un punto
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(evt.getKeyChar()) && 
+                (c != '.' || txtSalary.getText().contains("."))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSalaryKeyTyped
 
     //Métodos para acceder a componentes privados
     public String getTxtBank() {

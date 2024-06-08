@@ -1,5 +1,6 @@
 package employeasepkg;
 
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +19,7 @@ public class FrameTablaUsuarios extends javax.swing.JFrame {
 
     public FrameTablaUsuarios(int idUser) {
         initComponents();
+        getContentPane().setBackground(new Color(0x6cb4d4));
         this.idUser = idUser;
         loadData();
     }
@@ -65,6 +67,7 @@ public class FrameTablaUsuarios extends javax.swing.JFrame {
         itemRegresar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         tableData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,6 +118,7 @@ public class FrameTablaUsuarios extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         itemRegresar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        itemRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/return.png"))); // NOI18N
         itemRegresar.setText("Regresar");
         itemRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -1,5 +1,6 @@
 package employeasepkg;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class FrameDocumentacion extends javax.swing.JFrame {
@@ -12,6 +13,7 @@ public class FrameDocumentacion extends javax.swing.JFrame {
     public FrameDocumentacion(int idUser) {
         initComponents();
         this.idUser = idUser;
+        getContentPane().setBackground(new Color(99, 0xFF, 0xFF, 255));
     }
 
     /**

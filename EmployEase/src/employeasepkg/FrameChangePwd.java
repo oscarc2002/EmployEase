@@ -19,12 +19,14 @@ public class FrameChangePwd extends javax.swing.JFrame {
     
     public FrameChangePwd(int idUser) {
         initComponents();
+        getContentPane().setBackground(new Color(0x6cb4d4));
         this.idUser = idUser;
         lblResponse.setVisible(false);
     }
     
     public FrameChangePwd(String user) {
         initComponents();
+        getContentPane().setBackground(new Color(0x6cb4d4));
         this.user = user;
         forgotFlag = true;
         lblResponse.setVisible(false);
@@ -46,6 +48,7 @@ public class FrameChangePwd extends javax.swing.JFrame {
         itemReturn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         lblWelcome.setFont(lblWelcome.getFont().deriveFont(lblWelcome.getFont().getStyle() | java.awt.Font.BOLD, lblWelcome.getFont().getSize()+10));
         lblWelcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -80,6 +83,7 @@ public class FrameChangePwd extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         itemReturn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        itemReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/return.png"))); // NOI18N
         itemReturn.setText("Regresar");
         itemReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,6 +142,7 @@ public class FrameChangePwd extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemReturnActionPerformed
